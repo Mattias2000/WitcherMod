@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:crows_eye"
+    },
+    
+    {
+      "item": "em:crows_eye"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:vitriol",
+        "count": 1
+    }
+}

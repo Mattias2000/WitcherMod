@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:ergot"
+    },
+    
+    {
+      "item": "em:ergot"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:vermilion",
+        "count": 1
+    }
+}

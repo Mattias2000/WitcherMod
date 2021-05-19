@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:vitriol"
+    },
+    
+    {
+      "item": "em:rebis"
+    },
+    
+    {
+      "item": "em:hydragenum"
+    },
+    
+    {
+      "item": "em:hydragenum"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:raffard",
+        "count": 1
+    }
+}

@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:arthropod"
+    ]
+  },
+  "criteria": {
+    "has_rebis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:rebis"
+          }
+        ]
+      }
+    },
+    "has_quebrith": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:quebrith"
+          }
+        ]
+      }
+    },
+    "has_vermilion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:vermilion"
+          }
+        ]
+      }
+    },
+    "has_aether": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:aether"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rebis",
+      "has_quebrith",
+      "has_vermilion",
+      "has_aether"
+    ]
+  ]
+}

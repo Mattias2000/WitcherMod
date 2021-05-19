@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:hydragenum"
+    },
+    
+    {
+      "item": "em:hydragenum"
+    },
+    
+    {
+      "item": "em:quebrith"
+    },
+    
+    {
+      "item": "em:vermilion"
+    },
+    
+    {
+      "item": "em:vermilion"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:full_moon",
+        "count": 1
+    }
+}

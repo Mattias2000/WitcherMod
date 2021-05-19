@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:vitriol"
+    },
+    
+    {
+      "item": "em:vitriol"
+    },
+    
+    {
+      "item": "em:rebis"
+    },
+    
+    {
+      "item": "em:rebis"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:blizzard",
+        "count": 1
+    }
+}

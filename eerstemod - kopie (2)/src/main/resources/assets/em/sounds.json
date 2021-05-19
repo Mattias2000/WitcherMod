@@ -1,0 +1,450 @@
+{
+"entity.nekker.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.nekker.ambient1",
+"sounds": [{ "name": "em:entity/nekker/ambient1", "stream": true}]
+},
+
+"entity.nekker.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.nekker.ambient2",
+"sounds": [{ "name": "em:entity/nekker/ambient2", "stream": true}]
+},
+
+"entity.nekker.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.nekker.ambient3",
+"sounds": [{ "name": "em:entity/nekker/ambient3", "stream": true}]
+},
+
+"entity.nekker.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.nekker.ambient4",
+"sounds": [{ "name": "em:entity/nekker/ambient4", "stream": true}]
+},
+
+"entity.nekker.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.nekker.hurt1",
+"sounds": [{ "name": "em:entity/nekker/hurt1", "stream": true}]
+},
+
+"entity.nekker.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.nekker.hurt2",
+"sounds": [{ "name": "em:entity/nekker/hurt2", "stream": true}]
+},
+
+"entity.nekker.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.nekker.hurt3",
+"sounds": [{ "name": "em:entity/nekker/hurt3", "stream": true}]
+},
+
+"entity.nekker.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.nekker.hurt4",
+"sounds": [{ "name": "em:entity/nekker/hurt4", "stream": true}]
+},
+
+"entity.nekker.death":
+{
+"category": "entity",
+"subtitle": "entity.nekker.death",
+"sounds": [{ "name": "em:entity/nekker/death", "stream": true}]
+},
+
+"entity.ghoul.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.ambient1",
+"sounds": [{ "name": "em:entity/ghoul/ambient1", "stream": true}]
+},
+
+"entity.ghoul.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.ambient2",
+"sounds": [{ "name": "em:entity/ghoul/ambient2", "stream": true}]
+},
+
+"entity.ghoul.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.ambient3",
+"sounds": [{ "name": "em:entity/ghoul/ambient3", "stream": true}]
+},
+
+"entity.ghoul.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.ambient4",
+"sounds": [{ "name": "em:entity/ghoul/ambient4", "stream": true}]
+},
+
+"entity.ghoul.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.hurt1",
+"sounds": [{ "name": "em:entity/ghoul/hurt1", "stream": true}]
+},
+
+"entity.ghoul.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.hurt2",
+"sounds": [{ "name": "em:entity/ghoul/hurt2", "stream": true}]
+},
+
+"entity.ghoul.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.hurt3",
+"sounds": [{ "name": "em:entity/ghoul/hurt3", "stream": true}]
+},
+
+"entity.ghoul.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.hurt4",
+"sounds": [{ "name": "em:entity/ghoul/hurt4", "stream": true}]
+},
+
+"entity.ghoul.death":
+{
+"category": "entity",
+"subtitle": "entity.ghoul.death",
+"sounds": [{ "name": "em:entity/ghoul/death", "stream": true}]
+},
+
+"entity.drowner.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.drowner.ambient1",
+"sounds": [{ "name": "em:entity/drowner/ambient1", "stream": true}]
+},
+
+"entity.drowner.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.drowner.ambient2",
+"sounds": [{ "name": "em:entity/drowner/ambient2", "stream": true}]
+},
+
+"entity.drowner.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.drowner.ambient3",
+"sounds": [{ "name": "em:entity/drowner/ambient3", "stream": true}]
+},
+
+"entity.drowner.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.drowner.ambient4",
+"sounds": [{ "name": "em:entity/drowner/ambient4", "stream": true}]
+},
+
+"entity.drowner.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.drowner.hurt1",
+"sounds": [{ "name": "em:entity/drowner/hurt1", "stream": true}]
+},
+
+"entity.drowner.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.drowner.hurt2",
+"sounds": [{ "name": "em:entity/drowner/hurt2", "stream": true}]
+},
+
+"entity.drowner.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.drowner.hurt3",
+"sounds": [{ "name": "em:entity/drowner/hurt3", "stream": true}]
+},
+
+"entity.drowner.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.drowner.hurt4",
+"sounds": [{ "name": "em:entity/drowner/hurt4", "stream": true}]
+},
+
+"entity.drowner.death":
+{
+"category": "entity",
+"subtitle": "entity.drowner.death",
+"sounds": [{ "name": "em:entity/drowner/death", "stream": true}]
+},
+
+"entity.fleder.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.fleder.ambient1",
+"sounds": [{ "name": "em:entity/fleder/ambient1", "stream": true}]
+},
+
+"entity.fleder.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.fleder.ambient2",
+"sounds": [{ "name": "em:entity/fleder/ambient2", "stream": true}]
+},
+
+"entity.fleder.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.fleder.ambient3",
+"sounds": [{ "name": "em:entity/fleder/ambient3", "stream": true}]
+},
+
+"entity.fleder.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.fleder.ambient4",
+"sounds": [{ "name": "em:entity/fleder/ambient4", "stream": true}]
+},
+
+"entity.fleder.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.fleder.hurt1",
+"sounds": [{ "name": "em:entity/fleder/hurt1", "stream": true}]
+},
+
+"entity.fleder.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.fleder.hurt2",
+"sounds": [{ "name": "em:entity/fleder/hurt2", "stream": true}]
+},
+
+"entity.fleder.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.fleder.hurt3",
+"sounds": [{ "name": "em:entity/fleder/hurt3", "stream": true}]
+},
+
+"entity.fleder.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.fleder.hurt4",
+"sounds": [{ "name": "em:entity/fleder/hurt4", "stream": true}]
+},
+
+"entity.fleder.death":
+{
+"category": "entity",
+"subtitle": "entity.fleder.death",
+"sounds": [{ "name": "em:entity/fleder/death", "stream": true}]
+},
+
+"entity.foglet.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.foglet.ambient1",
+"sounds": [{ "name": "em:entity/foglet/ambient1", "stream": true}]
+},
+
+"entity.foglet.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.foglet.ambient2",
+"sounds": [{ "name": "em:entity/foglet/ambient2", "stream": true}]
+},
+
+"entity.foglet.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.foglet.ambient3",
+"sounds": [{ "name": "em:entity/foglet/ambient3", "stream": true}]
+},
+
+"entity.foglet.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.foglet.ambient4",
+"sounds": [{ "name": "em:entity/foglet/ambient4", "stream": true}]
+},
+
+"entity.foglet.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.foglet.hurt1",
+"sounds": [{ "name": "em:entity/foglet/hurt1", "stream": true}]
+},
+
+"entity.foglet.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.foglet.hurt2",
+"sounds": [{ "name": "em:entity/foglet/hurt2", "stream": true}]
+},
+
+"entity.foglet.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.foglet.hurt3",
+"sounds": [{ "name": "em:entity/foglet/hurt3", "stream": true}]
+},
+
+"entity.foglet.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.foglet.hurt4",
+"sounds": [{ "name": "em:entity/foglet/hurt4", "stream": true}]
+},
+
+"entity.foglet.death":
+{
+"category": "entity",
+"subtitle": "entity.foglet.death",
+"sounds": [{ "name": "em:entity/foglet/death", "stream": true}]
+},
+
+"entity.rotfiend.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.ambient1",
+"sounds": [{ "name": "em:entity/rotfiend/ambient1", "stream": true}]
+},
+
+"entity.rotfiend.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.ambient2",
+"sounds": [{ "name": "em:entity/rotfiend/ambient2", "stream": true}]
+},
+
+"entity.rotfiend.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.ambient3",
+"sounds": [{ "name": "em:entity/rotfiend/ambient3", "stream": true}]
+},
+
+"entity.rotfiend.ambient4":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.ambient4",
+"sounds": [{ "name": "em:entity/rotfiend/ambient4", "stream": true}]
+},
+
+"entity.rotfiend.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.hurt1",
+"sounds": [{ "name": "em:entity/rotfiend/hurt1", "stream": true}]
+},
+
+"entity.rotfiend.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.hurt2",
+"sounds": [{ "name": "em:entity/rotfiend/hurt2", "stream": true}]
+},
+
+"entity.rotfiend.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.hurt3",
+"sounds": [{ "name": "em:entity/rotfiend/hurt3", "stream": true}]
+},
+
+"entity.rotfiend.death":
+{
+"category": "entity",
+"subtitle": "entity.rotfiend.death",
+"sounds": [{ "name": "em:entity/rotfiend/death", "stream": true}]
+},
+
+"entity.arachas.ambient1":
+{
+"category": "entity",
+"subtitle": "entity.arachas.ambient1",
+"sounds": [{ "name": "em:entity/arachas/ambient1", "stream": true}]
+},
+
+"entity.arachas.ambient2":
+{
+"category": "entity",
+"subtitle": "entity.arachas.ambient2",
+"sounds": [{ "name": "em:entity/arachas/ambient2", "stream": true}]
+},
+
+"entity.arachas.ambient3":
+{
+"category": "entity",
+"subtitle": "entity.arachas.ambient3",
+"sounds": [{ "name": "em:entity/arachas/ambient3", "stream": true}]
+},
+
+"entity.arachas.hurt1":
+{
+"category": "entity",
+"subtitle": "entity.arachas.hurt1",
+"sounds": [{ "name": "em:entity/arachas/hurt1", "stream": true}]
+},
+
+"entity.arachas.hurt2":
+{
+"category": "entity",
+"subtitle": "entity.arachas.hurt2",
+"sounds": [{ "name": "em:entity/arachas/hurt2", "stream": true}]
+},
+
+"entity.arachas.hurt3":
+{
+"category": "entity",
+"subtitle": "entity.arachas.hurt3",
+"sounds": [{ "name": "em:entity/arachas/hurt3", "stream": true}]
+},
+
+"entity.arachas.hurt4":
+{
+"category": "entity",
+"subtitle": "entity.arachas.hurt4",
+"sounds": [{ "name": "em:entity/arachas/hurt4", "stream": true}]
+},
+
+"entity.arachas.hurt5":
+{
+"category": "entity",
+"subtitle": "entity.arachas.hurt5",
+"sounds": [{ "name": "em:entity/arachas/hurt5", "stream": true}]
+},
+
+"entity.arachas.death":
+{
+"category": "entity",
+"subtitle": "entity.arachas.death",
+"sounds": [{ "name": "em:entity/arachas/death", "stream": true}]
+},
+
+"entity.arachas.warning":
+{
+"category": "entity",
+"subtitle": "entity.arachas.warning",
+"sounds": [{ "name": "em:entity/arachas/warning", "stream": true}]
+},
+
+"entity.arachas.shoot":
+{
+"category": "entity",
+"subtitle": "entity.arachas.shoot",
+"sounds": [{ "name": "em:entity/arachas/shoot", "stream": true}]
+}
+
+}

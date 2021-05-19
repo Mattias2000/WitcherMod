@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:rebis"
+    },
+    
+    {
+      "item": "em:rebis"
+    },
+    
+    {
+      "item": "em:quebrith"
+    },
+    
+    {
+      "item": "em:hydragenum"
+    },
+    
+    {
+      "item": "em:vermilion"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:petris_philter",
+        "count": 1
+    }
+}

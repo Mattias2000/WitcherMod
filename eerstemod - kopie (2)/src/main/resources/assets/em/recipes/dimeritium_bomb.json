@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SRS",
+        "ASA",
+        "SRS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "R":
+       {
+       		"item": "em:rebis"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:dimeritium_bomb",
+        "count": 1
+    }
+}

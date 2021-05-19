@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:monster_brain"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:aether",
+        "count": 1
+    }
+}

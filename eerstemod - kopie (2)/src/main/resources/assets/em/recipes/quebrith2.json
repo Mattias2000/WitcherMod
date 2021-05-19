@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:balisse"
+    },
+    
+    {
+      "item": "em:balisse"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:quebrith",
+        "count": 1
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "GAG",
+        "RGR",
+        "GVG"
+    ],
+   
+    "key":
+    {
+        "G":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "R":
+       {
+       		"item": "em:rebis"
+       },
+       "V":
+       {
+       		"item": "em:vermilion"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:samum",
+        "count": 1
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SSS",
+        "S S",
+        "SAS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "em:silver_nugget"
+        },
+        "A":
+        {
+            "item": "em:silver_ingot"
+        }
+    },
+   
+    "result":
+    {
+        "item": "em:medallion",
+        "count": 1
+    }
+}

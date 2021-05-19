@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:blizzard"
+    ]
+  },
+  "criteria": {
+    "has_rebis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:rebis"
+          }
+        ]
+      }
+    },
+    "has_vitriol": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:vitriol"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rebis",
+      "has_vitriol"
+    ]
+  ]
+}

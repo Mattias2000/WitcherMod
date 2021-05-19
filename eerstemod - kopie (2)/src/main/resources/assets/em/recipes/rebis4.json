@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:han_fiber"
+    },
+    
+    {
+      "item": "em:han_fiber"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:rebis",
+        "count": 1
+    }
+}

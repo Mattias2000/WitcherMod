@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:killer_whale"
+    ]
+  },
+  "criteria": {
+    "has_rebis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:rebis"
+          }
+        ]
+      }
+    },
+    "has_quebrith": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:quebrith"
+          }
+        ]
+      }
+    },
+    "has_aether": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:aether"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rebis",
+      "has_quebrith",
+      "has_aether"
+    ]
+  ]
+}

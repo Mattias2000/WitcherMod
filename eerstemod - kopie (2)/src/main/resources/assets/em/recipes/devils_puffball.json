@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "GRG",
+        "AGA",
+        "GHG"
+    ],
+   
+    "key":
+    {
+        "G":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "R":
+       {
+       		"item": "em:rebis"
+       },
+       "H":
+       {
+       		"item": "em:hydragenum"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:devils_puffball",
+        "count": 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:beggartick"
+    },
+    
+    {
+      "item": "em:beggartick"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:hydragenum",
+        "count": 1
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:cat"
+    ]
+  },
+  "criteria": {
+    "has_rebis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:rebis"
+          }
+        ]
+      }
+    },
+    "has_quebrith": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:quebrith"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rebis",
+      "has_quebrith"
+    ]
+  ]
+}

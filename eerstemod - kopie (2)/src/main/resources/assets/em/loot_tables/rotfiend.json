@@ -1,0 +1,82 @@
+{
+    "pools": [
+        {
+            "name": "Main", 
+            "rolls": {
+                "min": 2,
+                "max": 3
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_bone"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_hair"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_skin"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_blood"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_tooth"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_claw"
+                }
+            ]
+        },
+        {
+            "name": "Single", 
+            "rolls": {
+                "min": 0,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_brain"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_heart"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_liver"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_tongue"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_eye"
+                },
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "em:monster_ear"
+                }
+            ]
+        }
+    ]
+}

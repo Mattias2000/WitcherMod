@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:raffard"
+    ]
+  },
+  "criteria": {
+    "has_rebis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:rebis"
+          }
+        ]
+      }
+    },
+    "has_vitriol": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:vitriol"
+          }
+        ]
+      }
+    },
+    "has_hydragenum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:hydragenum"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rebis",
+      "has_vitriol",
+      "has_hydragenum"
+    ]
+  ]
+}

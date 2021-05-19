@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:ginatia"
+    },
+    
+    {
+      "item": "em:ginatia"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:aether",
+        "count": 1
+    }
+}

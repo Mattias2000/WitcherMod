@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:monster_eye"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:vitriol",
+        "count": 1
+    }
+}

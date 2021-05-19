@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:mistletoe"
+    },
+    
+    {
+      "item": "em:mistletoe"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:hydragenum",
+        "count": 1
+    }
+}

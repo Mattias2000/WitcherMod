@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SSS",
+        "ASR",
+        "SSS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "R":
+       {
+       		"item": "em:rebis"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:bomb",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:glass_bottle"
+    },
+ 
+    {
+      "item": "em:monster_liver"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:rebis",
+        "count": 1
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SSS",
+        "ASV",
+        "SSS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "V":
+       {
+       		"item": "em:vitriol"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:dancing_star",
+        "count": 1
+    }
+}

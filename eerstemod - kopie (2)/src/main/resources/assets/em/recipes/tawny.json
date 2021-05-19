@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:vitriol"
+    },
+    
+    {
+      "item": "em:aether"
+    },
+    
+    {
+      "item": "em:aether"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:tawny",
+        "count": 1
+    }
+}

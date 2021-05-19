@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SHS",
+        "ASA",
+        "SHS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "minecraft:gunpowder"
+        },
+        "A":
+        {
+        	"item": "em:aether"
+        },
+       "H":
+       {
+       		"item": "em:hydragenum"
+       }
+    },
+   
+    "result":
+    {
+        "item": "em:stenchbulb",
+        "count": 1
+    }
+}

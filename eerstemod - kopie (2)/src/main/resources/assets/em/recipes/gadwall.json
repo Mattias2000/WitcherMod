@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:rebis"
+    },
+    
+    {
+      "item": "em:vermilion"
+    },
+    
+    {
+      "item": "em:aether"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:gadwall",
+        "count": 1
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:stenchbulb"
+    ]
+  },
+  "criteria": {
+    "has_hydragenum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:hydragenum"
+          }
+        ]
+      }
+    },
+    "has_aether": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:aether"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hydragenum",
+      "has_aether"
+    ]
+  ]
+}

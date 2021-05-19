@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+   "pattern":
+    [
+        "SSS",
+        "SSS",
+        "SSS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "em:silver_nugget"
+        }
+    },
+   
+    "result":
+    {
+        "item": "em:silver_ingot",
+        "count": 1
+    }
+}

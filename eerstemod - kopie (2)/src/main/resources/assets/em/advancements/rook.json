@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "em:rook"
+    ]
+  },
+  "criteria": {
+    "has_vitriol": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:vitriol"
+          }
+        ]
+      }
+    },
+    "has_hydragenum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:hydragenum"
+          }
+        ]
+      }
+    },
+    "has_vermilion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "em:vermilion"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_vitriol",
+      "has_hydragenum",
+      "has_vermilion"
+    ]
+  ]
+}

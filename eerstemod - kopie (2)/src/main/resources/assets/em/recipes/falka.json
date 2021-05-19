@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "em:vitriol"
+    },
+ 
+    {
+      "item": "em:vermilion"
+    },
+    
+    {
+      "item": "em:quebrith"
+    },
+    
+    {
+      "item": "em:hydragenum"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "em:falka",
+        "count": 1
+    }
+}
