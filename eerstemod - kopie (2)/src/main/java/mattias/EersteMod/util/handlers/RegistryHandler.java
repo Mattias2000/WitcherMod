@@ -52,7 +52,7 @@ public class RegistryHandler {
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
 		EntityInit.registerEntities();
-		RenderHandler.registerEntityRenders();
+		if(event.getSide().isClient()) RenderHandler.registerEntityRenders();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event) {
