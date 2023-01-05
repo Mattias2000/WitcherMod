@@ -1,49 +1,35 @@
 package mattias.EersteMod;
 
-import mattias.EersteMod.init.ModRecipes;
-import mattias.EersteMod.proxy.CommonProxy;
-import mattias.EersteMod.util.Reference;
-import mattias.EersteMod.util.handlers.RegistryHandler;
-import mattias.EersteMod.world.ModWorldGen;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@Mod("em")
 public class Main {
+	public static final Logger LOGGER = LogManager.getLogger("The Witcher");
+	public static final String MOD_ID = "em";
 
-	@Instance
-	public static Main instance;
-	
-	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
-	public static CommonProxy proxy;
-	
-	@EventHandler
-	public static void PreInit(FMLPreInitializationEvent event)
-	{
-		RegistryHandler.preInitRegistries(event);
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+	public Main() {
+
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		modEventBus.addListener(this::setup);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
-	@EventHandler
-	public static void init(FMLInitializationEvent event)
-	{
-		ModRecipes.init();
-		RegistryHandler.initRegistries(event);
-		
+
+	private void setup(final FMLCommonSetupEvent event) {
 	}
-	
-	@EventHandler
-	public static void Postinit(FMLPostInitializationEvent event)
-	{
-		RegistryHandler.postInitRegistries(event);
+
+	private void doClientStuff(final FMLClientSetupEvent event) {
 	}
-	
-	
-	
 }
+
+
+

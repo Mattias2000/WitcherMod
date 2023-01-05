@@ -1,0 +1,46 @@
+modLoader="javafml"
+
+loaderVersion="[36,)"
+
+license="All rights reserved"
+
+issueTrackerURL="https://github.com/Mattias2000/WitcherMod/issues"
+
+[[mods]]
+
+configBackground="em:textures/blocks/silver_ore_block.png"
+
+modId="em"
+
+updateJSONUrl="https://forge.curseupdate.com/323893/em"
+
+version="3.3"
+
+displayName="The Witcher"
+
+displayURL="https://www.curseforge.com/minecraft/mc-mods/witcher-mod"
+
+logoFile="logo.jpeg"
+
+credits="Thanks to Mattias Tuk for making the versions below 1.16.5"
+
+authors=["RedRoseWarrior1 aka DevMaster1015"]
+
+description='''
+Let Steve become a witcher and save the Overworld from terrifying monsters!'''
+
+# Base Forge
+[[dependencies.em]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+# Base Minecraft
+[[dependencies.em]]
+    modId="minecraft"
+    mandatory=true
+versionRange="[1.16.5,1.17]"
+    ordering="NONE"
+    side="BOTH"
