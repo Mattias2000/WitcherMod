@@ -5,10 +5,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 
-public class BlockBase extends BlockItem {
+public class HerbBlockBase extends BlockItem {
 
-	public BlockBase(Block block) {
-		super(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS));
+	public HerbBlockBase(Block block) {
+		super(block, new Item.Properties().group(ItemGroup.DECORATIONS));
 	}
 }
 

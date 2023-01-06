@@ -1,5 +1,8 @@
 package mattias.EersteMod;
 
+import mattias.EersteMod.init.ModBlocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +24,8 @@ public class Main {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
+		ModBlocks.init();
+
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -28,6 +33,30 @@ public class Main {
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
+		RenderTypeLookup.setRenderLayer(ModBlocks.ALLSPICE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.BALISSE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.BEGGARTICK.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.BERBERCANE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.BRYONIA.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.CELANDINE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.CROWSEYE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.ERGOT.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.FEAINNEWEDD.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.FOOLS_PARSLEY.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GINATIA.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GREEN_MUSHROOM.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.HAN_FIBER.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.HELLEBORE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.HONEYSUCKLE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.HOP.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.MANDRAKE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.MISTLETOE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.SEWANT_MUSHROOM.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.VERBENA.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.WHITE_MYRTLE.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.WOLFS_ALOE_LEAVES.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.WOLFSBANE.get(), RenderType.getCutout());
+
 	}
 }
 
