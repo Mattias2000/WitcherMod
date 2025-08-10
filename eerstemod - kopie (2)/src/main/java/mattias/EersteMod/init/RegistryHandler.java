@@ -13,7 +13,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModBlocks {
+public class RegistryHandler {
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Main.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
@@ -76,7 +76,5 @@ public class ModBlocks {
 	public static final RegistryObject<Item> WHITE_MYRTLE_ITEM = ITEMS.register("white_myrtle", () -> new HerbBlockBase(WHITE_MYRTLE.get()));
 	public static final RegistryObject<Item> WOLFS_ALOE_LEAVES_ITEM = ITEMS.register("wolfs_aloe_leaves", () -> new HerbBlockBase(WOLFS_ALOE_LEAVES.get()));
 	public static final RegistryObject<Item> WOLFSBANE_ITEM = ITEMS.register("wolfsbane", () -> new HerbBlockBase(WOLFSBANE.get()));
-
-
 
 }

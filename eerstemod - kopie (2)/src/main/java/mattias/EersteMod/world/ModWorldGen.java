@@ -2,7 +2,7 @@ package mattias.EersteMod.world;
 
 import java.util.Random;
 
-import mattias.EersteMod.init.ModBlocks;
+import mattias.EersteMod.init.RegistryHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -34,61 +34,61 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 	
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkgenerator, IChunkProvider chunkprovider) {
-		generateOre(ModBlocks.SILVER_ORE_BLOCK.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, random.nextInt(6) + 1, 6);
+		generateOre(RegistryHandler.SILVER_ORE_BLOCK.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, random.nextInt(6) + 1, 6);
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForest) {
-			populate(new HerbGen(ModBlocks.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.MISTLETOE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForestMutated) {
-			populate(new HerbGen(ModBlocks.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.MISTLETOE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeHills) {
-			populate(new HerbGen(ModBlocks.GINATIA), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.BERBERCANE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.CELANDINE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.GINATIA), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BERBERCANE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.CELANDINE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeJungle) {
-			populate(new HerbGen(ModBlocks.FEAINNEWEDD), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.ERGOT), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.FEAINNEWEDD), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.ERGOT), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeMushroomIsland) {
-			populate(new HerbGen(ModBlocks.GREEN_MUSHROOM), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.SEWANT_MUSHROOM), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.GREEN_MUSHROOM), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.SEWANT_MUSHROOM), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomePlains) {
-			populate(new HerbGen(ModBlocks.HAN_FIBER), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.HELLEBORE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.WHITE_MYRTLE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.HAN_FIBER), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.HELLEBORE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.WHITE_MYRTLE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForest) {
-			populate(new HerbGen(ModBlocks.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.MISTLETOE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSavanna) {
-			populate(new HerbGen(ModBlocks.MANDRAKE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.VERBENA), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.MANDRAKE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.VERBENA), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSavannaMutated) {
-			populate(new HerbGen(ModBlocks.MANDRAKE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.VERBENA), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.MANDRAKE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.VERBENA), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSnow) {
-			populate(new HerbGen(ModBlocks.BRYONIA), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.HONEYSUCKLE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BRYONIA), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.HONEYSUCKLE), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSwamp) {
-			populate(new HerbGen(ModBlocks.BEGGARTICK), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.FOOLS_PARSLEY), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.WOLFS_ALOE_LEAVES), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.BEGGARTICK), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.FOOLS_PARSLEY), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.WOLFS_ALOE_LEAVES), world, random, chunkX, chunkZ, 5);
 		}
 		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeTaiga) {
-			populate(new HerbGen(ModBlocks.CROWSEYE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.HOP), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(ModBlocks.WOLFSBANE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.CROWSEYE), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.HOP), world, random, chunkX, chunkZ, 5);
+			populate(new HerbGen(RegistryHandler.WOLFSBANE), world, random, chunkX, chunkZ, 5);
 		}
 	}
 	
