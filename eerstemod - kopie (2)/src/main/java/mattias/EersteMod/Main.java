@@ -1,8 +1,10 @@
 package mattias.EersteMod;
 
 import mattias.EersteMod.init.RegistryHandler;
+
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -59,6 +61,3 @@ public class Main {
 
 	}
 }
-
-
-
