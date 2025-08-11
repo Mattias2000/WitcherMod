@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "em:silver_block" }
+        "": { "model": "em:block/silver_block" }
     }
 }
