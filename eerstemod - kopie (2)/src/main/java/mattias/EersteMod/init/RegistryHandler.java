@@ -1,13 +1,12 @@
 package mattias.EersteMod.init;
 
 import mattias.EersteMod.Main;
-import mattias.EersteMod.blocks.HerbBlockBase;
-import mattias.EersteMod.blocks.Herb;
-//import mattias.EersteMod.blocks.SilverBlock;
-//import mattias.EersteMod.blocks.SilverOreBlock;
+import mattias.EersteMod.blocks.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
 import net.minecraft.item.Item;
+
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,9 +23,9 @@ public class RegistryHandler {
 
 	}
 	//silver
-//	public static final Block SILVER_ORE_BLOCK = new SilverOreBlock("silver_ore_block", Material.IRON);
-//	public static final Block SILVER_BLOCK = new SilverBlock("silver_block", Material.IRON);
-	
+	public static final RegistryObject<Block> SILVER_ORE = BLOCKS.register("silver_ore", SilverOreBlock::new);
+	public static final RegistryObject<Block> SILVER_BLOCK = BLOCKS.register("silver_block", SilverBlock::new);
+
 	//herb blocks
 	public static final RegistryObject<BushBlock> ALLSPICE = BLOCKS.register("allspice", Herb::new);
 	public static final RegistryObject<BushBlock> BALISSE = BLOCKS.register("balisse", Herb::new);
@@ -76,5 +75,9 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> WHITE_MYRTLE_ITEM = ITEMS.register("white_myrtle", () -> new HerbBlockBase(WHITE_MYRTLE.get()));
 	public static final RegistryObject<Item> WOLFS_ALOE_LEAVES_ITEM = ITEMS.register("wolfs_aloe_leaves", () -> new HerbBlockBase(WOLFS_ALOE_LEAVES.get()));
 	public static final RegistryObject<Item> WOLFSBANE_ITEM = ITEMS.register("wolfsbane", () -> new HerbBlockBase(WOLFSBANE.get()));
+
+	//silver item blocks
+	public static final RegistryObject<Item> SILVER_ORE_ITEM = ITEMS.register("silver_ore", () -> new BlockBase(SILVER_ORE.get()));
+	public static final RegistryObject<Item> SILVER_BLOCK_ITEM = ITEMS.register("silver_block", () -> new BlockBase(SILVER_BLOCK.get()));
 
 }
