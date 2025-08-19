@@ -1,77 +1,74 @@
 package mattias.EersteMod.bombs;
 
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.datafix.DataFixer;
+import mattias.EersteMod.init.RegistryHandler;
+
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IRendersAsItem;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.ThrowableEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityDancingStar extends EntityThrowable{
+import net.minecraftforge.fml.network.NetworkHooks;
 
-	public static final PropertyBool EXPLODE = PropertyBool.create("explode");
-	public EntityDancingStar(World worldIn) {
-		super(worldIn);
+
+public class EntityDancingStar extends ThrowableEntity implements IRendersAsItem {
+
+	public EntityDancingStar(EntityType<? extends ThrowableEntity> entity, World worldIn) {
+		super(entity, worldIn);
 	}
-	 public EntityDancingStar(World worldIn, EntityLivingBase throwerIn)
-	    {
-	        super(worldIn, throwerIn);
-	    }
 
+	public EntityDancingStar(World worldIn, LivingEntity shooter) {
+		super(RegistryHandler.DANCING_STAR_ENTITY.get(), shooter, worldIn);
+		this.setMotion(shooter.getLookVec().scale(1.5));
 
-	 
-	 @SideOnly(Side.CLIENT)   
-	 public EntityDancingStar(World worldIn, double x, double y, double z)
-	    {
-	        super(worldIn, x, y, z);
-	    }
+	}
 
-	   public static void registerFixesBomb(DataFixer fixer)
-	    {
-	        EntityThrowable.registerFixesThrowable(fixer, "ThrownBomb");
-	    }
+	@Override
+	protected void onEntityHit(EntityRayTraceResult result) {
+		super.onEntityHit(result);
+		if (!this.world.isRemote) {
+			applyEffectsAndExplode();
+		}
+	}
 
-	    /**
-	     * Handler for {@link World#setEntityState}
-	     */
+	@Override
+	protected void onImpact(RayTraceResult result) {
+		super.onImpact(result);
+		if (!this.world.isRemote) {
+			applyEffectsAndExplode();
+		}
+	}
 
+	private void applyEffectsAndExplode() {
 
-	    /**
-	     * Called when this EntityThrowable hits a block or entity.
-	     */
-	    protected void onImpact(RayTraceResult result)
-	    {
-	 
-	    if (!this.world.isRemote)
-        {
-	   /*     if (result.entityHit != null)
-	        {
-	            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.0F);
-	        }*/
-	        this.world.newExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 1.5F,true ,true);
-	        this.setDead();
-		        
+		// Explosion with TNT smoke, fire, block damage
+		this.world.createExplosion(
+				this,
+				this.getPosX(), this.getPosY(), this.getPosZ(),
+				1.5F,
+				true,
+				Explosion.Mode.DESTROY
+		);
 
-	        }
-	    	
-	    	
+		this.remove(); // remove projectile after effect
+	}
 
-	    }
-	        
-	        @Override
-	    	public void onUpdate() {
-	    		EntityLivingBase thrower = this.getThrower();
-	    		
-	    		if(thrower != null && thrower instanceof EntityPlayer && !thrower.isEntityAlive())
-	    			this.setDead();
-	    		else
-	    			super.onUpdate();
-	    	}
-	      
-	        
+	@Override
+	public ItemStack getItem() {
+		return new ItemStack(RegistryHandler.DANCING_STAR.get());
+	}
 
+	@Override
+	protected void registerData() {
+	}
+
+	@Override
+	public IPacket<?> createSpawnPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
+	}
 }

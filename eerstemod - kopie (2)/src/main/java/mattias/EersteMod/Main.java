@@ -2,11 +2,14 @@ package mattias.EersteMod;
 
 import mattias.EersteMod.init.RegistryHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -58,6 +61,18 @@ public class Main {
 		RenderTypeLookup.setRenderLayer(RegistryHandler.WHITE_MYRTLE.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(RegistryHandler.WOLFS_ALOE_LEAVES.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(RegistryHandler.WOLFSBANE.get(), RenderType.getCutout());
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.STENCH_BULB.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.BOMB_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.DANCING_STAR_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.DEVILS_PUFFBALL_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.DIMERITIUM_BOMB_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.SAMUM_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 
 	}
 }

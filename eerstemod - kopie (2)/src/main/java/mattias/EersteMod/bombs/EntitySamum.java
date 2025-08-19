@@ -2,107 +2,97 @@ package mattias.EersteMod.bombs;
 
 import java.util.List;
 
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.MobEffects;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.datafix.DataFixer;
+import mattias.EersteMod.init.RegistryHandler;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IRendersAsItem;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.ThrowableEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntitySamum extends EntityThrowable{
+import net.minecraftforge.fml.network.NetworkHooks;
 
-	public static final PropertyBool EXPLODE = PropertyBool.create("explode");
-	PotionEffect effect = new PotionEffect(MobEffects.SLOWNESS, 2400, 0, false, true);
-	public EntitySamum(World worldIn) {
-		super(worldIn);
+public class EntitySamum extends ThrowableEntity implements IRendersAsItem {
+
+	public EntitySamum(EntityType<? extends ThrowableEntity> entity, World worldIn) {
+		super(entity, worldIn);
 	}
-	 public EntitySamum(World worldIn, EntityLivingBase throwerIn)
-	    {
-	        super(worldIn, throwerIn);
-	    }
 
+	public EntitySamum(World worldIn, LivingEntity shooter) {
+		super(RegistryHandler.SAMUM_ENTITY.get(), shooter, worldIn);
+		this.setMotion(shooter.getLookVec().scale(1.5));
 
-	 
-	 @SideOnly(Side.CLIENT)   
-	 public EntitySamum(World worldIn, double x, double y, double z)
-	    {
-	        super(worldIn, x, y, z);
-	    }
+	}
 
-	   public static void registerFixesBomb(DataFixer fixer)
-	    {
-	        EntityThrowable.registerFixesThrowable(fixer, "ThrownBomb");
-	    }
+	@Override
+	protected void onEntityHit(EntityRayTraceResult result) {
+		super.onEntityHit(result);
+		if (!this.world.isRemote) {
+			applyEffectsAndExplode(result.getEntity());
+		}
+	}
 
-	    /**
-	     * Handler for {@link World#setEntityState}
-	     */
+	@Override
+	protected void onImpact(RayTraceResult result) {
+		super.onImpact(result);
+		if (!this.world.isRemote) {
+			applyEffectsAndExplode(null);
+		}
+	}
 
+	private void applyEffectsAndExplode(Entity hitEntity) {
+		// Area scan around the impact point
+		AxisAlignedBB area = this.getBoundingBox().grow(4.0D, 2.0D, 4.0D);
+		List<LivingEntity> entities = this.world.getEntitiesWithinAABB(LivingEntity.class, area);
 
-	    /**
-	     * Called when this EntityThrowable hits a block or entity.
-	     */
-	    protected void onImpact(RayTraceResult result)
-	    {
-	    AxisAlignedBB axisalignedbb = this.getEntityBoundingBox().grow(4.0D, 2.0D, 4.0D);
-	    List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
-	 
-	    if (!this.world.isRemote)
-        {
-	     /*   if (result.entityHit != null)
-	        {
-	            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.0F);
-	        }*/
-	        if(!list.isEmpty())
-	        {
-	        	for(EntityLivingBase entitylivingbase : list)
-	        	{
-	        		if(entitylivingbase.canBeHitWithPotion())
-	        		{
-	        			double d0 = this.getDistanceSq(entitylivingbase);
-	        			if(d0<16.0D)
-	        			{
-	        				double d1 = 1.0D - Math.sqrt(d0) / 4.0D;
-	        				if(entitylivingbase==result.entityHit)
-	        				{
-	        					d1=1.0D;
-	        				}
-	        				int i = (int)(d1*(double)effect.getDuration()+0.5D);
-	        				if(i>20)
-	        				{
-	        					entitylivingbase.addPotionEffect(new PotionEffect(effect.getPotion(), i, effect.getAmplifier(), effect.getIsAmbient(), effect.doesShowParticles()));
-	        				}
-	        			}
-	        		}
-	        	}
-	        }
-	        this.world.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 1.5F, true);
-	        this.setDead();
-		        
+		if (!entities.isEmpty()) {
+			for (LivingEntity target : entities) {
+				double distanceSq = this.getDistanceSq(target);
+				if (distanceSq < 16.0D) { // within 4 blocks
+					double scale = 1.0D - Math.sqrt(distanceSq) / 4.0D;
+					if (target == hitEntity) {
+						scale = 1.0D; // direct hit = full effect
+					}
+					int duration = (int)(scale * 2400 + 0.5D); // max 2400 ticks = 2 minutes
+					if (duration > 20) { // must last at least 1 sec
+						target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, duration, 0, false, true));
+					}
+				}
+			}
+		}
 
-	        }
-	    	
-	    	
+		// Explosion with TNT smoke, no fire, block damage
+		this.world.createExplosion(
+				this,
+				this.getPosX(), this.getPosY(), this.getPosZ(),
+				1.5F,
+				false,
+				Explosion.Mode.DESTROY
+		);
 
-	    }
-	        
-	        @Override
-	    	public void onUpdate() {
-	    		EntityLivingBase thrower = this.getThrower();
-	    		
-	    		if(thrower != null && thrower instanceof EntityPlayer && !thrower.isEntityAlive())
-	    			this.setDead();
-	    		else
-	    			super.onUpdate();
-	    	}
-	      
-	        
+		this.remove(); // remove projectile after effect
+	}
 
+	@Override
+	public ItemStack getItem() {
+		return new ItemStack(RegistryHandler.SAMUM.get());
+	}
+
+	@Override
+	protected void registerData() {
+	}
+
+	@Override
+	public IPacket<?> createSpawnPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
+	}
 }

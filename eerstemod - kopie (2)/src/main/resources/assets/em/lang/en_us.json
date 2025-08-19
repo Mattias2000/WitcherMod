@@ -81,5 +81,12 @@
   "entity.em.rotfiend": "Rotfiend",
   "entity.em.exploding_rotfiend": "Exploding rotfiend",
   "entity.em.fleder": "Fleder",
-  "entity.em.fledermaus": "Fledermaus"
+  "entity.em.fledermaus": "Fledermaus",
+  "entity.em.bomb": "Grapeshot",
+  "entity.em.dancing_star": "Dancing Star",
+  "entity.em.stench_bulb": "Stenchbulb",
+  "entity.em.dimeritium_bomb": "Dimeritium Bomb",
+  "entity.em.samum": "Samum",
+  "entity.em.devils_puffball": "Devil's Puffball"
+
 }

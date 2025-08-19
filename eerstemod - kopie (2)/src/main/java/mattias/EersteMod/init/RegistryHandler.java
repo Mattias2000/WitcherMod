@@ -3,8 +3,12 @@ package mattias.EersteMod.init;
 import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
 
+import mattias.EersteMod.bombs.*;
+import mattias.EersteMod.items.BombBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 
 import net.minecraftforge.fml.RegistryObject;
@@ -16,10 +20,13 @@ public class RegistryHandler {
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Main.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Main.MOD_ID);
+
 
 	public static void init() {
 		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 	}
 	//silver
@@ -79,5 +86,43 @@ public class RegistryHandler {
 	//silver item blocks
 	public static final RegistryObject<Item> SILVER_ORE_ITEM = ITEMS.register("silver_ore", () -> new BlockBase(SILVER_ORE.get()));
 	public static final RegistryObject<Item> SILVER_BLOCK_ITEM = ITEMS.register("silver_block", () -> new BlockBase(SILVER_BLOCK.get()));
+
+	//Bombs
+	public static final RegistryObject<EntityType<EntityStenchbulb>> STENCH_BULB = ENTITIES
+			.register("stench_bulb",
+					() ->  EntityType.Builder.<EntityStenchbulb>create(EntityStenchbulb::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("stench_bulb"));
+	public static final RegistryObject<EntityType<EntityBomb>> BOMB_ENTITY = ENTITIES
+			.register("bomb",
+					() ->  EntityType.Builder.<EntityBomb>create(EntityBomb::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("bomb"));
+	public static final RegistryObject<EntityType<EntityDancingStar>> DANCING_STAR_ENTITY = ENTITIES
+			.register("dancing_star",
+					() ->  EntityType.Builder.<EntityDancingStar>create(EntityDancingStar::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("dancing_star"));
+	public static final RegistryObject<EntityType<EntityDevilsPuffball>> DEVILS_PUFFBALL_ENTITY = ENTITIES
+			.register("devils_puffball",
+					() ->  EntityType.Builder.<EntityDevilsPuffball>create(EntityDevilsPuffball::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("devils_puffball"));
+	public static final RegistryObject<EntityType<EntityDimeritiumBomb>> DIMERITIUM_BOMB_ENTITY = ENTITIES
+			.register("dimeritium_bomb",
+					() ->  EntityType.Builder.<EntityDimeritiumBomb>create(EntityDimeritiumBomb::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("dimeritium_bomb"));
+	public static final RegistryObject<EntityType<EntitySamum>> SAMUM_ENTITY = ENTITIES
+			.register("samum",
+					() ->  EntityType.Builder.<EntitySamum>create(EntitySamum::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("samum"));
+	public static final RegistryObject<Item> STENCHBULB = ITEMS.register("stenchbulb", () -> new BombBase(BombBase.BombType.STENCHBULB));
+	public static final RegistryObject<Item> BOMB = ITEMS.register("bomb", () -> new BombBase(BombBase.BombType.NORMAL));
+	public static final RegistryObject<Item> DANCING_STAR = ITEMS.register("dancing_star", () -> new BombBase(BombBase.BombType.FIRE));
+	public static final RegistryObject<Item> DEVILS_PUFFBALL = ITEMS.register("devils_puffball", () -> new BombBase(BombBase.BombType.DEVILS_PUFF_BALL));
+	public static final RegistryObject<Item> DIMERITIUM_BOMB = ITEMS.register("dimeritium_bomb", () -> new BombBase(BombBase.BombType.DIMERITIUM));
+	public static final RegistryObject<Item> SAMUM = ITEMS.register("samum", () -> new BombBase(BombBase.BombType.SAMUM));
 
 }
