@@ -76,5 +76,4 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 	public IPacket<?> createSpawnPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
-
 }

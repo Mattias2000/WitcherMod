@@ -73,6 +73,13 @@ public class Main {
 				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.SAMUM_ENTITY.get(),
 				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
-
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.AARD_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.IGNI_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.AXII_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.YRDEN_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 	}
 }

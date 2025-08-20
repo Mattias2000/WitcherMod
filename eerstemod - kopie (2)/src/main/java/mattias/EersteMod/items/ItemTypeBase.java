@@ -3,7 +3,9 @@ package mattias.EersteMod.items;
 import mattias.EersteMod.bombs.*;
 
 import mattias.EersteMod.signs.EntityAard;
+import mattias.EersteMod.signs.EntityAxii;
 import mattias.EersteMod.signs.EntityIgni;
+import mattias.EersteMod.signs.EntityYrden;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -27,7 +29,9 @@ public class ItemTypeBase extends Item {
 		// Signs
 		AARD,
 		IGNI,
-		QUEN
+		QUEN,
+		AXII,
+		YRDEN
 	}
 
 	private final ItemType type;
@@ -39,7 +43,7 @@ public class ItemTypeBase extends Item {
 
 	private static Properties getProperties(ItemType type) {
 		Item.Properties props = new Item.Properties().group(ItemGroup.COMBAT);
-		if (type == ItemType.AARD || type == ItemType.IGNI || type == ItemType.QUEN) {
+		if (type == ItemType.AARD || type == ItemType.IGNI || type == ItemType.QUEN || type == ItemType.AXII || type == ItemType.YRDEN) {
 			props.maxDamage(200); // all signs use durability
 		}
 		return props;
@@ -51,7 +55,7 @@ public class ItemTypeBase extends Item {
 
 		// Handle durability or consumption
 		if (!playerIn.abilities.isCreativeMode) {
-			if (type == ItemType.AARD || type == ItemType.IGNI || type == ItemType.QUEN) {
+			if (type == ItemType.AARD || type == ItemType.IGNI || type == ItemType.QUEN || type == ItemType.AXII || type == ItemType.YRDEN) {
 				stack.damageItem(1, playerIn, (p) -> p.sendBreakAnimation(handIn));
 			} else {
 				stack.shrink(1);
@@ -102,6 +106,16 @@ public class ItemTypeBase extends Item {
 
 				case QUEN:
 					playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 1160, 0)); // 58 secs, lvl 1
+					break;
+
+				case AXII:
+					worldIn.addEntity(new EntityAxii(worldIn, playerIn));
+					playThrowSound(worldIn, playerIn);
+					break;
+
+				case YRDEN:
+					worldIn.addEntity(new EntityYrden(worldIn, playerIn));
+					playThrowSound(worldIn, playerIn);
 					break;
 			}
 		}
