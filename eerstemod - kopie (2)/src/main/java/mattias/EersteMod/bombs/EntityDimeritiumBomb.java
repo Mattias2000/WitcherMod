@@ -13,7 +13,6 @@ import net.minecraft.network.IPacket;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -33,7 +32,7 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 	protected void onEntityHit(EntityRayTraceResult result) {
 		super.onEntityHit(result);
 		if (!this.world.isRemote) {
-			applyEffects();
+			clearEffects();
 		}
 	}
 
@@ -41,11 +40,11 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 	protected void onImpact(RayTraceResult result) {
 		super.onImpact(result);
 		if (!this.world.isRemote) {
-			applyEffects();
+			clearEffects();
 		}
 	}
 
-	private void applyEffects() {
+	private void clearEffects() {
 		// Area scan around the impact point
 		AxisAlignedBB area = this.getBoundingBox().grow(4.0D, 2.0D, 4.0D);
 		List<LivingEntity> entities = this.world.getEntitiesWithinAABB(LivingEntity.class, area);
