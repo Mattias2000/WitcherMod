@@ -33,7 +33,7 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 	protected void onEntityHit(EntityRayTraceResult result) {
 		super.onEntityHit(result);
 		if (!this.world.isRemote) {
-			applyEffectsAndExplode();
+			applyEffects();
 		}
 	}
 
@@ -41,11 +41,11 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 	protected void onImpact(RayTraceResult result) {
 		super.onImpact(result);
 		if (!this.world.isRemote) {
-			applyEffectsAndExplode();
+			applyEffects();
 		}
 	}
 
-	private void applyEffectsAndExplode() {
+	private void applyEffects() {
 		// Area scan around the impact point
 		AxisAlignedBB area = this.getBoundingBox().grow(4.0D, 2.0D, 4.0D);
 		List<LivingEntity> entities = this.world.getEntitiesWithinAABB(LivingEntity.class, area);
@@ -60,15 +60,6 @@ public class EntityDimeritiumBomb extends ThrowableEntity implements IRendersAsI
 				}
 			}
 		}
-
-		// Explosion with TNT smoke, no fire, block damage
-		this.world.createExplosion(
-				this,
-				this.getPosX(), this.getPosY(), this.getPosZ(),
-				1.5F,
-				false,
-				Explosion.Mode.DESTROY
-		);
 
 		this.remove(); // remove projectile after effect
 	}
