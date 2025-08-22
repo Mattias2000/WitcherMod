@@ -5,6 +5,7 @@ import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
 import mattias.EersteMod.items.OilItem;
+import mattias.EersteMod.items.PotionBase;
 import mattias.EersteMod.items.Sign_BombBase;
 import mattias.EersteMod.signs.*;
 
@@ -15,6 +16,9 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -161,5 +165,19 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> ARTHROPOD_OIL = ITEMS.register("arthropod", () -> new OilItem(Enchantments.BANE_OF_ARTHROPODS, 3));
 	public static final RegistryObject<Item> UNDEAD_OIL = ITEMS.register("undead", () -> new OilItem(Enchantments.SMITE, 3));
 	public static final RegistryObject<Item> FALKA_BLOOD = ITEMS.register("falka", () -> new OilItem(Enchantments.SHARPNESS, 3));
+
+	//Potions
+	public static final RegistryObject<Item> TAWNY = ITEMS.register("tawny", () -> new PotionBase(new EffectInstance(Effects.HEALTH_BOOST, 6000, 1, false, true), new EffectInstance(Effects.WEAKNESS, 6000, 0, false, true), false));
+	public static final RegistryObject<Item> PETRIS_PHILTER = ITEMS.register("petris_philter", () -> new PotionBase(null, null, false, new ItemStack(RegistryHandler.QUEN.get()), new ItemStack(RegistryHandler.AXII.get()), new ItemStack(RegistryHandler.AARD.get()), new ItemStack(RegistryHandler.IGNI.get()), new ItemStack(RegistryHandler.YRDEN.get())));
+	public static final RegistryObject<Item> WHITE_HONEY = ITEMS.register("white_honey", () -> new PotionBase(null, null, true));
+	public static final RegistryObject<Item> SWALLOW = ITEMS.register("swallow", () -> new PotionBase(new EffectInstance(Effects.REGENERATION, 6000, 0, false, true), null, false));
+	public static final RegistryObject<Item> CAT = ITEMS.register("cat", () -> new PotionBase(new EffectInstance(Effects.NIGHT_VISION, 6000, 0, false, true), null, false));
+	public static final RegistryObject<Item> BLIZZARD = ITEMS.register("blizzard", () -> new PotionBase(new EffectInstance(Effects.HASTE, 6000, 0, false, true), new EffectInstance(Effects.SPEED, 6000, 0, false, true), false));
+	public static final RegistryObject<Item> FULL_MOON = ITEMS.register("full_moon", () -> new PotionBase(new EffectInstance(Effects.HEALTH_BOOST, 6000, 0, false, true), null, false));
+	public static final RegistryObject<Item> THUNDERBOLT = ITEMS.register("thunderbolt", () -> new PotionBase(new EffectInstance(Effects.STRENGTH, 6000, 1, false, true), new EffectInstance(Effects.SLOWNESS, 6000, 0, false, true), false));
+	public static final RegistryObject<Item> RAFFARD = ITEMS.register("raffard", () -> new PotionBase(new EffectInstance(Effects.INSTANT_HEALTH, 0, 1, false, true), null, false));
+	public static final RegistryObject<Item> GADWALL = ITEMS.register("gadwall", () -> new PotionBase(new EffectInstance(Effects.REGENERATION, 6000, 1, false, true), new EffectInstance(Effects.WEAKNESS, 6000, 0, false, true), false));
+	public static final RegistryObject<Item> ROOK = ITEMS.register("rook", () -> new PotionBase(new EffectInstance(Effects.STRENGTH, 6000, 0, false, true), null, false));
+	public static final RegistryObject<Item> KILLER_WHALE = ITEMS.register("killer_whale", () -> new PotionBase(new EffectInstance(Effects.WATER_BREATHING, 6000, 0, false, true), null, false));
 
 }

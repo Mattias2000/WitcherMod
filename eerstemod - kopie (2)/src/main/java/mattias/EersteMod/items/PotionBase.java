@@ -1,111 +1,91 @@
 package mattias.EersteMod.items;
 
-import mattias.EersteMod.Main;
-import mattias.EersteMod.init.ModItems;
-import mattias.EersteMod.util.IHasModel;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.potion.*;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class PotionBase extends Item implements IHasModel {
-	
-	PotionEffect effect;
-	PotionEffect effect2;
+public class PotionBase extends Item {
 
-	public PotionBase(String name, PotionEffect effect, PotionEffect effect2)
-	{
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.BREWING);
-		
-		ModItems.ITEMS.add(this);
-		
-		this.effect = effect;
-		this.effect2 = effect2;
-	}
+    private final EffectInstance effect;
+    private final EffectInstance effect2;
+    private final ItemStack[] rewards;
+    private final boolean clearsEffects;
 
-	@Override
-	public void registerModels() {
-		
-		Main.proxy.registerItemRenderer(this, 0, "inventory");
-		
-	}
-	
-	@SideOnly(Side.CLIENT)
-    public ItemStack getDefaultInstance()
-    {
-        return PotionUtils.addPotionToItemStack(super.getDefaultInstance(), PotionTypes.WATER);
+    public PotionBase(EffectInstance effect, EffectInstance effect2, boolean clearsEffects, ItemStack... rewards) {
+        super(new Item.Properties().maxStackSize(1).group(ItemGroup.BREWING));
+        this.effect = effect;
+        this.effect2 = effect2;
+        this.rewards = rewards;
+        this.clearsEffects = clearsEffects;
+
     }
 
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
-	{
-		EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer)entityLiving : null;
-		 
-		if (entityplayer instanceof EntityPlayerMP)
-		{
-			CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP)entityplayer, stack);
-		}
-	 
-	 	 if(!worldIn.isRemote)
-	 	 {
-	 		if(effect!=null)
-	 		entityLiving.addPotionEffect(new PotionEffect(effect.getPotion(), effect.getDuration(), effect.getAmplifier(), effect.getIsAmbient(), effect.doesShowParticles()));
-	 		if(effect2!=null)
-	 		entityLiving.addPotionEffect(new PotionEffect(effect2.getPotion(), effect2.getDuration(), effect2.getAmplifier(), effect2.getIsAmbient(), effect2.doesShowParticles()));
-	 	 }
-		  
-		 if (entityplayer == null || !entityplayer.capabilities.isCreativeMode)
-	     {
-			 stack.shrink(1);
-	     }
-		 
-		 if (entityplayer == null || !entityplayer.capabilities.isCreativeMode)
-		 {
-			 if (stack.isEmpty())
-			 {
-				 return new ItemStack(Items.GLASS_BOTTLE);
-			 }
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity entityLiving) {
+        PlayerEntity player = entityLiving instanceof PlayerEntity ? (PlayerEntity) entityLiving : null;
 
-			 if (entityplayer != null)
-			 {
-				 entityplayer.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-			 }
-		 }
-		 return stack;
-	}
+        if (player instanceof ServerPlayerEntity) {
+            CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayerEntity) player, stack);
+        }
 
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack)
-	{
-		return true;
-	}
-	public EnumAction getItemUseAction(ItemStack stack)
-	{
-		return EnumAction.DRINK;
-	}
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-	{
-		playerIn.setActiveHand(handIn);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-	}
-	public int getMaxItemUseDuration(ItemStack stack)
-	{
-		return 32;
-	} 
+        if (!world.isRemote) {
+            if (effect != null) {
+                entityLiving.addPotionEffect(new EffectInstance(effect));
+            }
+            if (effect2 != null) {
+                entityLiving.addPotionEffect(new EffectInstance(effect2));
+            }
+            // Give reward items if defined
+            if (rewards != null && player != null) {
+                for (ItemStack reward : rewards) {
+                    player.inventory.addItemStackToInventory(reward.copy());
+                }
+            }
+            if (clearsEffects) {
+                entityLiving.clearActivePotions();
+            }
+        }
+
+        if (player == null || !player.abilities.isCreativeMode) {
+            stack.shrink(1);
+        }
+
+        if (player == null || !player.abilities.isCreativeMode) {
+            if (stack.isEmpty()) {
+                return new ItemStack(Items.GLASS_BOTTLE);
+            }
+
+            if (player != null) {
+                player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+            }
+        }
+
+        return stack;
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.DRINK;
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+        player.setActiveHand(hand);
+        return new ActionResult<>(ActionResultType.SUCCESS, player.getHeldItem(hand));
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 32;
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
 }
