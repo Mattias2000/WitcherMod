@@ -4,13 +4,13 @@ import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
-import mattias.EersteMod.items.ItemTypeBase;
-import mattias.EersteMod.signs.EntityAard;
-import mattias.EersteMod.signs.EntityAxii;
-import mattias.EersteMod.signs.EntityIgni;
-import mattias.EersteMod.signs.EntityYrden;
+import mattias.EersteMod.items.OilItem;
+import mattias.EersteMod.items.Sign_BombBase;
+import mattias.EersteMod.signs.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -122,6 +122,15 @@ public class RegistryHandler {
 					() ->  EntityType.Builder.<EntitySamum>create(EntitySamum::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("samum"));
+
+	public static final RegistryObject<Item> STENCHBULB = ITEMS.register("stenchbulb", () -> new Sign_BombBase(Sign_BombBase.ItemType.STENCHBULB));
+	public static final RegistryObject<Item> BOMB = ITEMS.register("bomb", () -> new Sign_BombBase(Sign_BombBase.ItemType.NORMAL));
+	public static final RegistryObject<Item> DANCING_STAR = ITEMS.register("dancing_star", () -> new Sign_BombBase(Sign_BombBase.ItemType.FIRE));
+	public static final RegistryObject<Item> DEVILS_PUFFBALL = ITEMS.register("devils_puffball", () -> new Sign_BombBase(Sign_BombBase.ItemType.DEVILS_PUFF_BALL));
+	public static final RegistryObject<Item> DIMERITIUM_BOMB = ITEMS.register("dimeritium_bomb", () -> new Sign_BombBase(Sign_BombBase.ItemType.DIMERITIUM));
+	public static final RegistryObject<Item> SAMUM = ITEMS.register("samum", () -> new Sign_BombBase(Sign_BombBase.ItemType.SAMUM));
+
+	//Signs
 	public static final RegistryObject<EntityType<EntityAard>> AARD_ENTITY = ENTITIES
 			.register("aard",
 					() ->  EntityType.Builder.<EntityAard>create(EntityAard::new, EntityClassification.MISC)
@@ -142,17 +151,15 @@ public class RegistryHandler {
 					() ->  EntityType.Builder.<EntityYrden>create(EntityYrden::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("yrden"));
-	public static final RegistryObject<Item> STENCHBULB = ITEMS.register("stenchbulb", () -> new ItemTypeBase(ItemTypeBase.ItemType.STENCHBULB));
-	public static final RegistryObject<Item> BOMB = ITEMS.register("bomb", () -> new ItemTypeBase(ItemTypeBase.ItemType.NORMAL));
-	public static final RegistryObject<Item> DANCING_STAR = ITEMS.register("dancing_star", () -> new ItemTypeBase(ItemTypeBase.ItemType.FIRE));
-	public static final RegistryObject<Item> DEVILS_PUFFBALL = ITEMS.register("devils_puffball", () -> new ItemTypeBase(ItemTypeBase.ItemType.DEVILS_PUFF_BALL));
-	public static final RegistryObject<Item> DIMERITIUM_BOMB = ITEMS.register("dimeritium_bomb", () -> new ItemTypeBase(ItemTypeBase.ItemType.DIMERITIUM));
-	public static final RegistryObject<Item> SAMUM = ITEMS.register("samum", () -> new ItemTypeBase(ItemTypeBase.ItemType.SAMUM));
-	public static final RegistryObject<Item> AARD = ITEMS.register("aard", () -> new ItemTypeBase(ItemTypeBase.ItemType.AARD));
-	public static final RegistryObject<Item> IGNI = ITEMS.register("igni", () -> new ItemTypeBase(ItemTypeBase.ItemType.IGNI));
-	public static final RegistryObject<Item> QUEN = ITEMS.register("quen", () -> new ItemTypeBase(ItemTypeBase.ItemType.QUEN));
-	public static final RegistryObject<Item> AXII = ITEMS.register("axii", () -> new ItemTypeBase(ItemTypeBase.ItemType.AXII));
-	public static final RegistryObject<Item> YRDEN = ITEMS.register("yrden", () -> new ItemTypeBase(ItemTypeBase.ItemType.YRDEN));
+	public static final RegistryObject<Item> AARD = ITEMS.register("aard", () -> new Sign_BombBase(Sign_BombBase.ItemType.AARD));
+	public static final RegistryObject<Item> IGNI = ITEMS.register("igni", () -> new Sign_BombBase(Sign_BombBase.ItemType.IGNI));
+	public static final RegistryObject<Item> QUEN = ITEMS.register("quen", () -> new Sign_BombBase(Sign_BombBase.ItemType.QUEN));
+	public static final RegistryObject<Item> AXII = ITEMS.register("axii", () -> new Sign_BombBase(Sign_BombBase.ItemType.AXII));
+	public static final RegistryObject<Item> YRDEN = ITEMS.register("yrden", () -> new Sign_BombBase(Sign_BombBase.ItemType.YRDEN));
 
+	//Oils
+	public static final RegistryObject<Item> ARTHROPOD_OIL = ITEMS.register("arthropod", () -> new OilItem(Enchantments.BANE_OF_ARTHROPODS, 3));
+	public static final RegistryObject<Item> UNDEAD_OIL = ITEMS.register("undead", () -> new OilItem(Enchantments.SMITE, 3));
+	public static final RegistryObject<Item> FALKA_BLOOD = ITEMS.register("falka", () -> new OilItem(Enchantments.SHARPNESS, 3));
 
 }

@@ -15,7 +15,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class ItemTypeBase extends Item {
+public class Sign_BombBase extends Item {
 
 	public enum ItemType {
 		// Bombs
@@ -36,7 +36,7 @@ public class ItemTypeBase extends Item {
 
 	private final ItemType type;
 
-	public ItemTypeBase(ItemType type) {
+	public Sign_BombBase(ItemType type) {
 		super(getProperties(type));
 		this.type = type;
 	}
