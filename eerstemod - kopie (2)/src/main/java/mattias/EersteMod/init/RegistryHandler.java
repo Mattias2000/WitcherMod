@@ -186,7 +186,7 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", WItem::new);
 	public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", WItem::new);
 	public static final RegistryObject<Item> WEB = ITEMS.register("web", WItem::new);
-	
+
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
 	public static final RegistryObject<Item> MONSTER_EYE= ITEMS.register("monster_eye", WItem::new);
