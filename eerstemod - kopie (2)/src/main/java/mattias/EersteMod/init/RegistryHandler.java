@@ -4,10 +4,7 @@ import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
-import mattias.EersteMod.items.MedallionBase;
-import mattias.EersteMod.items.OilItem;
-import mattias.EersteMod.items.PotionBase;
-import mattias.EersteMod.items.Sign_BombBase;
+import mattias.EersteMod.items.*;
 import mattias.EersteMod.signs.*;
 
 import net.minecraft.block.Block;
@@ -183,5 +180,19 @@ public class RegistryHandler {
 
 	//MISC
 	public static final RegistryObject<Item> MEDALLION = ITEMS.register("medallion", MedallionBase::new);
+
+	//Monster Loot
+	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
+	public static final RegistryObject<Item> MONSTER_EYE= ITEMS.register("monster_eye", WItem::new);
+	public static final RegistryObject<Item> MONSTER_TOOTH = ITEMS.register("monster_tooth", WItem::new);
+	public static final RegistryObject<Item> MONSTER_SKIN = ITEMS.register("monster_skin", WItem::new);
+	public static final RegistryObject<Item> MONSTER_TONGUE = ITEMS.register("monster_tongue", WItem::new);
+	public static final RegistryObject<Item> MONSTER_BRAIN = ITEMS.register("monster_brain", WItem::new);
+	public static final RegistryObject<Item> MONSTER_HAIR = ITEMS.register("monster_hair", WItem::new);
+	public static final RegistryObject<Item> MONSTER_HEART = ITEMS.register("monster_heart", WItem::new);
+	public static final RegistryObject<Item> MONSTER_LIVER = ITEMS.register("monster_liver", WItem::new);
+	public static final RegistryObject<Item> MONSTER_EAR = ITEMS.register("monster_ear", WItem::new);
+	public static final RegistryObject<Item> MONSTER_BLOOD = ITEMS.register("monster_blood", WItem::new);
+
 
 }
