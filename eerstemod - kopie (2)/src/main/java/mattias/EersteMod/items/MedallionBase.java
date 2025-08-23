@@ -1,87 +1,53 @@
 package mattias.EersteMod.items;
 
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.World;
+
 import java.util.List;
 
-import javax.annotation.Nullable;
+public class MedallionBase extends Item {
 
-import mattias.EersteMod.init.ModItems;
-import mattias.EersteMod.util.Reference;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-public class MedallionBase extends ItemBase {
-
-	public MedallionBase(String name)
+	public MedallionBase()
 	{
-		super(name);
-		setCreativeTab(CreativeTabs.TOOLS);
-		this.setMaxDamage(50);
-		setMaxStackSize(1);
-		
-		
-		
-		this.addPropertyOverride(new ResourceLocation("vibrating"), new IItemPropertyGetter()
-        {
-            @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
-            {
-            	if(entityIn == null)
-            	{
-            		return 0.0F;
-            	}
-            	else
-            	{
-            	List<EntityMob> list = entityIn.world.<EntityMob>getEntitiesWithinAABB(EntityMob.class, new AxisAlignedBB((double)entityIn.posX - 8.0D, (double)entityIn.posY - 5.0D, (double)entityIn.posZ - 8.0D, (double)entityIn.posX + 8.0D, (double)entityIn.posY + 5.0D, (double)entityIn.posZ + 8.0D));
-        	    if (!list.isEmpty())
-        	    {
-        	    	return 1.0F;
-        	    }
-            		else
-            		{
-            			return 0.0F;
-            		}
-            	}
-            }
-        });
-	}
-	
+		super(new Item.Properties()
+				.group(ItemGroup.TOOLS)
+				.maxDamage(50));
+}
 
-	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		ItemStack stack = playerIn.getHeldItem(handIn);
-		if(!playerIn.capabilities.isCreativeMode && !worldIn.isRemote)
-		stack.damageItem(1, playerIn);
-		
-	    List<EntityMob> list = playerIn.world.<EntityMob>getEntitiesWithinAABB(EntityMob.class, new AxisAlignedBB((double)playerIn.posX - 8.0D, (double)playerIn.posY - 5.0D, (double)playerIn.posZ - 8.0D, (double)playerIn.posX + 8.0D, (double)playerIn.posY + 5.0D, (double)playerIn.posZ + 8.0D));
-	    if (!list.isEmpty())
-	    {
 
-	    	for(EntityMob entitymob : list)
-	    	{
-    					entitymob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 100, 0, false, false));
-	    	}
-	    }
-		
-		playerIn.addStat(StatList.getObjectUseStats(this));
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+		if (!playerIn.abilities.isCreativeMode && !worldIn.isRemote) {
+			stack.damageItem(1, playerIn, (p) -> p.sendBreakAnimation(handIn));
+		}
+
+		AxisAlignedBB area = new AxisAlignedBB(
+				playerIn.getPosX() - 8.0D, playerIn.getPosY() - 5.0D, playerIn.getPosZ() - 8.0D,
+				playerIn.getPosX() + 8.0D, playerIn.getPosY() + 5.0D, playerIn.getPosZ() + 8.0D
+		);
+
+		List<MonsterEntity> list = playerIn.world.getEntitiesWithinAABB(MonsterEntity.class, area);
+		if (!list.isEmpty()) {
+			for (MonsterEntity mob : list) {
+				mob.addPotionEffect(new EffectInstance(Effects.GLOWING, 100, 0, false, false));
+			}
+		}
+
+		playerIn.addStat(Stats.ITEM_USED.get(this));
+		return new ActionResult<>(ActionResultType.SUCCESS, stack);
 	}
-	
+
+
 }

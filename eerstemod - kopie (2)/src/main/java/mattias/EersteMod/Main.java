@@ -7,6 +7,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -17,6 +21,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 @Mod("em")
 public class Main {
@@ -35,6 +41,23 @@ public class Main {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
+		// In your ModItems class or client setup
+		ItemModelsProperties.registerProperty(
+				RegistryHandler.MEDALLION.get(),
+				new ResourceLocation("vibrating"),
+				(stack, world, entity) -> {
+					if (entity == null) {
+						return 0.0F;
+					} else {
+						AxisAlignedBB area = new AxisAlignedBB(
+								entity.getPosX() - 8.0D, entity.getPosY() - 5.0D, entity.getPosZ() - 8.0D,
+								entity.getPosX() + 8.0D, entity.getPosY() + 5.0D, entity.getPosZ() + 8.0D
+						);
+						List<MonsterEntity> mobs = entity.world.getEntitiesWithinAABB(MonsterEntity.class, area);
+						return mobs.isEmpty() ? 0.0F : 1.0F;
+					}
+				}
+		);
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {

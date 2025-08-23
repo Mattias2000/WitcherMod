@@ -4,6 +4,7 @@ import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
+import mattias.EersteMod.items.MedallionBase;
 import mattias.EersteMod.items.OilItem;
 import mattias.EersteMod.items.PotionBase;
 import mattias.EersteMod.items.Sign_BombBase;
@@ -179,5 +180,8 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> GADWALL = ITEMS.register("gadwall", () -> new PotionBase(new EffectInstance(Effects.REGENERATION, 6000, 1, false, true), new EffectInstance(Effects.WEAKNESS, 6000, 0, false, true), false));
 	public static final RegistryObject<Item> ROOK = ITEMS.register("rook", () -> new PotionBase(new EffectInstance(Effects.STRENGTH, 6000, 0, false, true), null, false));
 	public static final RegistryObject<Item> KILLER_WHALE = ITEMS.register("killer_whale", () -> new PotionBase(new EffectInstance(Effects.WATER_BREATHING, 6000, 0, false, true), null, false));
+
+	//MISC
+	public static final RegistryObject<Item> MEDALLION = ITEMS.register("medallion", MedallionBase::new);
 
 }
