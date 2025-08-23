@@ -5,6 +5,7 @@ import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
 import mattias.EersteMod.items.*;
+import mattias.EersteMod.items.tools.ToolMaterialList;
 import mattias.EersteMod.signs.*;
 
 import net.minecraft.block.Block;
@@ -14,7 +15,9 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
@@ -201,5 +204,9 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> QUEBRITH = ITEMS.register("quebrith", WItem::new);
 	public static final RegistryObject<Item> HYDRAGENUM = ITEMS.register("hydragenum", WItem::new);
 	public static final RegistryObject<Item> VERMILION = ITEMS.register("vermilion", WItem::new);
+
+	//Weapons
+	public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register("silver_sword", () -> new SwordItem(ToolMaterialList.SILVER, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT)));
+
 
 }
