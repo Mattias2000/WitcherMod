@@ -194,5 +194,12 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> MONSTER_EAR = ITEMS.register("monster_ear", WItem::new);
 	public static final RegistryObject<Item> MONSTER_BLOOD = ITEMS.register("monster_blood", WItem::new);
 
+	//Ingredients
+	public static final RegistryObject<Item> VITRIOL = ITEMS.register("vitriol", WItem::new);
+	public static final RegistryObject<Item> REBIS = ITEMS.register("rebis", WItem::new);
+	public static final RegistryObject<Item> AETHER = ITEMS.register("aether", WItem::new);
+	public static final RegistryObject<Item> QUEBRITH = ITEMS.register("quebrith", WItem::new);
+	public static final RegistryObject<Item> HYDRAGENUM = ITEMS.register("hydragenum", WItem::new);
+	public static final RegistryObject<Item> VERMILION = ITEMS.register("vermilion", WItem::new);
 
 }
