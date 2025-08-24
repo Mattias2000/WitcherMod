@@ -1,18 +1,23 @@
 package mattias.EersteMod;
 
-import mattias.EersteMod.init.RegistryHandler;
+import mattias.EersteMod.entities.EntityArachas;
+import mattias.EersteMod.entities.renders.RenderArachas;
+import mattias.EersteMod.util.handlers.RegistryHandler;
 
+import mattias.EersteMod.util.handlers.SoundsHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -36,7 +41,7 @@ public class Main {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
 		RegistryHandler.init();
-
+		SoundsHandler.registerSounds();
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -58,6 +63,9 @@ public class Main {
 					}
 				}
 		);
+		DeferredWorkQueue.runLater(() -> {
+			GlobalEntityTypeAttributes.put(RegistryHandler.ARACHAS.get(), EntityArachas.getAttributes().create());
+		});
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
@@ -104,5 +112,9 @@ public class Main {
 				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.YRDEN_ENTITY.get(),
 				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.WEB_ENTITY.get(),
+				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.ARACHAS.get(), RenderArachas::new);
+
 	}
 }

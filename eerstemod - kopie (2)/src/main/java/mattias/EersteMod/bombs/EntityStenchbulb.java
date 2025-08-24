@@ -1,14 +1,12 @@
 package mattias.EersteMod.bombs;
 
-import mattias.EersteMod.init.RegistryHandler;
+import mattias.EersteMod.util.handlers.RegistryHandler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRendersAsItem;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.entity.projectile.ThrowableEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;

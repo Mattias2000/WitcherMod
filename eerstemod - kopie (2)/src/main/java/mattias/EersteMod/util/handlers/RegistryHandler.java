@@ -1,9 +1,11 @@
-package mattias.EersteMod.init;
+package mattias.EersteMod.util.handlers;
 
 import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
+import mattias.EersteMod.entities.EntityArachas;
+import mattias.EersteMod.entities.EntityWeb;
 import mattias.EersteMod.items.*;
 import mattias.EersteMod.items.tools.ToolMaterialList;
 import mattias.EersteMod.signs.*;
@@ -20,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -186,6 +190,7 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", WItem::new);
 	public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", WItem::new);
 	public static final RegistryObject<Item> WEB = ITEMS.register("web", WItem::new);
+	public static final RegistryObject<Item> ARACHAS_SPAWN_EGG = ITEMS.register("arachas_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ARACHAS, 0xff99cc, 0x99ffcc, new Item.Properties().group(ItemGroup.MISC)));
 
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
@@ -211,5 +216,15 @@ public class RegistryHandler {
 	//Weapons
 	public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register("silver_sword", () -> new SwordItem(ToolMaterialList.SILVER, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT)));
 
-
+	//Entities
+	public static final RegistryObject<EntityType<EntityWeb>> WEB_ENTITY = ENTITIES
+			.register("web",
+					() ->  EntityType.Builder.<EntityWeb>create(EntityWeb::new, EntityClassification.MISC)
+							.size(0.5F, 0.4F)
+							.build("web"));
+	public static final RegistryObject<EntityType<EntityArachas>> ARACHAS = ENTITIES
+			.register("arachas",
+					() -> EntityType.Builder.<EntityArachas>create(EntityArachas::new, EntityClassification.MONSTER)
+							.size(1.4F, 0.9F)
+							.build(new ResourceLocation(Main.MOD_ID, "arachas").toString()));
 }

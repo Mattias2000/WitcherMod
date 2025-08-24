@@ -1,6 +1,6 @@
 package mattias.EersteMod.bombs;
 
-import mattias.EersteMod.init.RegistryHandler;
+import mattias.EersteMod.util.handlers.RegistryHandler;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRendersAsItem;

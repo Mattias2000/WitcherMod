@@ -2,7 +2,7 @@ package mattias.EersteMod.bombs;
 
 import java.util.List;
 
-import mattias.EersteMod.init.RegistryHandler;
+import mattias.EersteMod.util.handlers.RegistryHandler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
