@@ -1,15 +1,19 @@
-package mattias.EersteMod.entity.model;
+package mattias.EersteMod.entities.models;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+import mattias.EersteMod.entities.EntityArachas;
+
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
 /**
  * ModelSpider - Either Mojang or a mod author
  * Created using Tabula 7.1.0
  */
-public class ModelArachas extends ModelBase {
+public class ModelArachas<t> extends EntityModel<EntityArachas> {
+
     public ModelRenderer body;
     public ModelRenderer leg1;
     public ModelRenderer leg2;
@@ -80,36 +84,7 @@ public class ModelArachas extends ModelBase {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-    	this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-        this.leg5.render(f5);
-        this.body.render(f5);
-        this.leg7.render(f5);
-        this.jaw2_1.render(f5);
-        this.leg2.render(f5);
-        this.leg4.render(f5);
-        this.shell.render(f5);
-        this.leg3.render(f5);
-        this.jaw2_3.render(f5);
-        this.jaw2.render(f5);
-        this.leg1.render(f5);
-        this.leg8.render(f5);
-        this.jaw2_2.render(f5);
-        this.leg6.render(f5);
-    }
-
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
-    
-    @Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-    		float headPitch, float scaleFactor, Entity entityIn) {
+    public void setRotationAngles(EntityArachas entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         float f = ((float)Math.PI / 4F);
         this.leg1.rotateAngleZ = -((float)Math.PI / 4F);
         this.leg2.rotateAngleZ = ((float)Math.PI / 4F);
@@ -153,5 +128,31 @@ public class ModelArachas extends ModelBase {
         this.leg6.rotateAngleZ += -f9;
         this.leg7.rotateAngleZ += f10;
         this.leg8.rotateAngleZ += -f10;
-    } 
+}
+
+    @Override
+    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+        this.leg5.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg7.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.jaw2_1.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg2.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg4.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.shell.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg3.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.jaw2_3.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.jaw2.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg1.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg8.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.jaw2_2.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.leg6.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+    /**
+     * This is a helper function from Tabula to set the rotation of model parts
+     */
+    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
 }
