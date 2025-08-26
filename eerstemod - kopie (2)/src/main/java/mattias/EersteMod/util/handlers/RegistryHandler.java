@@ -5,6 +5,7 @@ import mattias.EersteMod.blocks.*;
 
 import mattias.EersteMod.bombs.*;
 import mattias.EersteMod.entities.EntityArachas;
+import mattias.EersteMod.entities.EntityDrowner;
 import mattias.EersteMod.entities.EntityWeb;
 import mattias.EersteMod.items.*;
 import mattias.EersteMod.items.tools.ToolMaterialList;
@@ -191,6 +192,7 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", WItem::new);
 	public static final RegistryObject<Item> WEB = ITEMS.register("web", WItem::new);
 	public static final RegistryObject<Item> ARACHAS_SPAWN_EGG = ITEMS.register("arachas_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ARACHAS, 0xff99cc, 0x99ffcc, new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> DROWNER_SPAWN_EGG = ITEMS.register("drowner_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.DROWNER, 9732779, 6936552, new Item.Properties().group(ItemGroup.MISC)));
 
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
@@ -227,4 +229,9 @@ public class RegistryHandler {
 					() -> EntityType.Builder.<EntityArachas>create(EntityArachas::new, EntityClassification.MONSTER)
 							.size(1.4F, 0.9F)
 							.build(new ResourceLocation(Main.MOD_ID, "arachas").toString()));
+	public static final RegistryObject<EntityType<EntityDrowner>> DROWNER = ENTITIES
+			.register("drowner",
+					() -> EntityType.Builder.<EntityDrowner>create(EntityDrowner::new, EntityClassification.MONSTER)
+							.size(1.2F, 2.1F)
+							.build(new ResourceLocation(Main.MOD_ID, "drowner").toString()));
 }

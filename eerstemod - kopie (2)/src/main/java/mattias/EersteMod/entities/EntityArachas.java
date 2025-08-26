@@ -92,8 +92,6 @@ public class EntityArachas extends MonsterEntity implements IRangedAttackMob{
 		}
 	}
 
-
-	
 	protected SoundEvent getHurtSound(DamageSource source)
 	{
 		double chance = Math.random();
@@ -118,7 +116,6 @@ public class EntityArachas extends MonsterEntity implements IRangedAttackMob{
 			return SoundsHandler.ENTITY_ARACHAS_HURT5;
 		}
 	}
-	
 
 	protected SoundEvent getDeathSound()
 	{

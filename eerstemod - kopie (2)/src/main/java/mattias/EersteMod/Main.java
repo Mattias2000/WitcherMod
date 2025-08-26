@@ -1,7 +1,9 @@
 package mattias.EersteMod;
 
 import mattias.EersteMod.entities.EntityArachas;
+import mattias.EersteMod.entities.EntityDrowner;
 import mattias.EersteMod.entities.renders.RenderArachas;
+import mattias.EersteMod.entities.renders.RenderDrowner;
 import mattias.EersteMod.util.handlers.RegistryHandler;
 
 import mattias.EersteMod.util.handlers.SoundsHandler;
@@ -65,6 +67,8 @@ public class Main {
 		);
 		DeferredWorkQueue.runLater(() -> {
 			GlobalEntityTypeAttributes.put(RegistryHandler.ARACHAS.get(), EntityArachas.getAttributes().create());
+			GlobalEntityTypeAttributes.put(RegistryHandler.DROWNER.get(), EntityDrowner.getAttributes().create());
+
 		});
 	}
 
@@ -115,6 +119,7 @@ public class Main {
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.WEB_ENTITY.get(),
 				manager -> new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer()));
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.ARACHAS.get(), RenderArachas::new);
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.DROWNER.get(), RenderDrowner::new);
 
 	}
 }

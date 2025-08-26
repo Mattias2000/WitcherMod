@@ -92,5 +92,7 @@
   "entity.em.axii": "Axii",
   "entity.em.igni": "Igni",
   "entity.em.yrden": "Yrden",
-  "item.em.arachas_spawn_egg": "Spawn Arachas"
+  "item.em.arachas_spawn_egg": "Spawn Arachas",
+  "item.em.drowner_spawn_egg": "Spawn Drowner"
+
 }
