@@ -1,24 +1,21 @@
-package mattias.EersteMod.entity;
+package mattias.EersteMod.entities;
 
-import mattias.EersteMod.util.handlers.LootTableHandler;
 import mattias.EersteMod.util.handlers.SoundsHandler;
-import net.minecraft.entity.SharedMonsterAttributes;
+
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityGhoul extends EntityMonster{
+public class EntityGhoul extends EntityLeapingMonster {
 
-	public EntityGhoul(World worldIn)
-	{
-		super(worldIn);
-		this.setSize(0.8F, 0.9F);
+	public EntityGhoul(final EntityType<? extends EntityGhoul> type, final World worldIn) {
+		super(type, worldIn);
 	}
-	protected ResourceLocation getLootTable() {
-		return LootTableHandler.GHOUL;
-	}
-	
+
 	protected SoundEvent getAmbientSound()
 	{
 		double chance = Math.random();
@@ -39,9 +36,6 @@ public class EntityGhoul extends EntityMonster{
 		}
 	}
 	
-
-
-	
 	protected SoundEvent getHurtSound(DamageSource source)
 	{
 		double chance = Math.random();
@@ -61,18 +55,18 @@ public class EntityGhoul extends EntityMonster{
 			return SoundsHandler.ENTITY_GHOUL_HURT4;
 		}
 	}
-	
 
 	protected SoundEvent getDeathSound()
 	{
 		return SoundsHandler.ENTITY_GHOUL_DEATH;
 	}
-	
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+
+	public static AttributeModifierMap.MutableAttribute getAttributes() {
+		return MobEntity.registerAttributes()
+				.createMutableAttribute(Attributes.MAX_HEALTH, 20)
+				.createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D)
+				.createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0F)
+				.createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D)
+				.createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 1);
 	}
 }

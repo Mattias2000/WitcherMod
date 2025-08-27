@@ -193,6 +193,7 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> DROWNER_SPAWN_EGG = ITEMS.register("drowner_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.DROWNER, 9732779, 6936552, new Item.Properties().group(ItemGroup.MISC)));
 	public static final RegistryObject<Item> FLEDER_SPAWN_EGG = ITEMS.register("fleder_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FLEDER, 7033908, 2169358, new Item.Properties().group(ItemGroup.MISC)));
 	public static final RegistryObject<Item> FOGLET_SPAWN_EGG = ITEMS.register("foglet_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FOGLET, 13685955, 14802881, new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> GHOUL_SPAWN_EGG = ITEMS.register("ghoul_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.GHOUL, 10193263, 8873793, new Item.Properties().group(ItemGroup.MISC)));
 
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
@@ -244,4 +245,9 @@ public class RegistryHandler {
 					() -> EntityType.Builder.<EntityFoglet>create(EntityFoglet::new, EntityClassification.MONSTER)
 							.size(0.6F, 1.95F)
 							.build(new ResourceLocation(Main.MOD_ID, "foglet").toString()));
+	public static final RegistryObject<EntityType<EntityGhoul>> GHOUL = ENTITIES
+			.register("ghoul",
+					() -> EntityType.Builder.<EntityGhoul>create(EntityGhoul::new, EntityClassification.MONSTER)
+							.size(0.8F, 0.9F)
+							.build(new ResourceLocation(Main.MOD_ID, "ghoul").toString()));
 }
