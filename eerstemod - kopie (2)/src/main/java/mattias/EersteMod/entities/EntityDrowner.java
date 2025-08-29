@@ -68,6 +68,5 @@ public class EntityDrowner extends EntityLeapingMonster {
 				.createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0F)
 				.createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.3D)
 				.createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 1D);
-
 	}
 }

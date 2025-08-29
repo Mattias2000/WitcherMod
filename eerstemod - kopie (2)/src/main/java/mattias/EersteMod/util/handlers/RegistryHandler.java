@@ -41,6 +41,7 @@ public class RegistryHandler {
 		ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 	}
+
 	//silver
 	public static final RegistryObject<Block> SILVER_ORE = BLOCKS.register("silver_ore", SilverOreBlock::new);
 	public static final RegistryObject<Block> SILVER_BLOCK = BLOCKS.register("silver_block", SilverBlock::new);
@@ -102,32 +103,32 @@ public class RegistryHandler {
 	//Bombs
 	public static final RegistryObject<EntityType<EntityStenchbulb>> STENCH_BULB = ENTITIES
 			.register("stench_bulb",
-					() ->  EntityType.Builder.<EntityStenchbulb>create(EntityStenchbulb::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityStenchbulb>create(EntityStenchbulb::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("stench_bulb"));
 	public static final RegistryObject<EntityType<EntityBomb>> BOMB_ENTITY = ENTITIES
 			.register("bomb",
-					() ->  EntityType.Builder.<EntityBomb>create(EntityBomb::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityBomb>create(EntityBomb::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("bomb"));
 	public static final RegistryObject<EntityType<EntityDancingStar>> DANCING_STAR_ENTITY = ENTITIES
 			.register("dancing_star",
-					() ->  EntityType.Builder.<EntityDancingStar>create(EntityDancingStar::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityDancingStar>create(EntityDancingStar::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("dancing_star"));
 	public static final RegistryObject<EntityType<EntityDevilsPuffball>> DEVILS_PUFFBALL_ENTITY = ENTITIES
 			.register("devils_puffball",
-					() ->  EntityType.Builder.<EntityDevilsPuffball>create(EntityDevilsPuffball::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityDevilsPuffball>create(EntityDevilsPuffball::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("devils_puffball"));
 	public static final RegistryObject<EntityType<EntityDimeritiumBomb>> DIMERITIUM_BOMB_ENTITY = ENTITIES
 			.register("dimeritium_bomb",
-					() ->  EntityType.Builder.<EntityDimeritiumBomb>create(EntityDimeritiumBomb::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityDimeritiumBomb>create(EntityDimeritiumBomb::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("dimeritium_bomb"));
 	public static final RegistryObject<EntityType<EntitySamum>> SAMUM_ENTITY = ENTITIES
 			.register("samum",
-					() ->  EntityType.Builder.<EntitySamum>create(EntitySamum::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntitySamum>create(EntitySamum::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("samum"));
 
@@ -141,22 +142,22 @@ public class RegistryHandler {
 	//Signs
 	public static final RegistryObject<EntityType<EntityAard>> AARD_ENTITY = ENTITIES
 			.register("aard",
-					() ->  EntityType.Builder.<EntityAard>create(EntityAard::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityAard>create(EntityAard::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("aard"));
 	public static final RegistryObject<EntityType<EntityIgni>> IGNI_ENTITY = ENTITIES
 			.register("igni",
-					() ->  EntityType.Builder.<EntityIgni>create(EntityIgni::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityIgni>create(EntityIgni::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("igni"));
 	public static final RegistryObject<EntityType<EntityAxii>> AXII_ENTITY = ENTITIES
 			.register("axii",
-					() ->  EntityType.Builder.<EntityAxii>create(EntityAxii::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityAxii>create(EntityAxii::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("axii"));
 	public static final RegistryObject<EntityType<EntityYrden>> YRDEN_ENTITY = ENTITIES
 			.register("yrden",
-					() ->  EntityType.Builder.<EntityYrden>create(EntityYrden::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityYrden>create(EntityYrden::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("yrden"));
 	public static final RegistryObject<Item> AARD = ITEMS.register("aard", () -> new Sign_BombBase(Sign_BombBase.ItemType.AARD));
@@ -194,10 +195,12 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> FLEDER_SPAWN_EGG = ITEMS.register("fleder_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FLEDER, 7033908, 2169358, new Item.Properties().group(ItemGroup.MISC)));
 	public static final RegistryObject<Item> FOGLET_SPAWN_EGG = ITEMS.register("foglet_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FOGLET, 13685955, 14802881, new Item.Properties().group(ItemGroup.MISC)));
 	public static final RegistryObject<Item> GHOUL_SPAWN_EGG = ITEMS.register("ghoul_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.GHOUL, 10193263, 8873793, new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> NEKKER_SPAWN_EGG = ITEMS.register("nekker_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.NEKKER, 11437146, 000000, new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> ROTFIEND_SPAWN_EGG = ITEMS.register("rotfiend_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ROTFIEND, 15101791, 13019229, new Item.Properties().group(ItemGroup.MISC)));
 
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
-	public static final RegistryObject<Item> MONSTER_EYE= ITEMS.register("monster_eye", WItem::new);
+	public static final RegistryObject<Item> MONSTER_EYE = ITEMS.register("monster_eye", WItem::new);
 	public static final RegistryObject<Item> MONSTER_TOOTH = ITEMS.register("monster_tooth", WItem::new);
 	public static final RegistryObject<Item> MONSTER_SKIN = ITEMS.register("monster_skin", WItem::new);
 	public static final RegistryObject<Item> MONSTER_TONGUE = ITEMS.register("monster_tongue", WItem::new);
@@ -222,7 +225,7 @@ public class RegistryHandler {
 	//Entities
 	public static final RegistryObject<EntityType<EntityWeb>> WEB_ENTITY = ENTITIES
 			.register("web",
-					() ->  EntityType.Builder.<EntityWeb>create(EntityWeb::new, EntityClassification.MISC)
+					() -> EntityType.Builder.<EntityWeb>create(EntityWeb::new, EntityClassification.MISC)
 							.size(0.5F, 0.4F)
 							.build("web"));
 	public static final RegistryObject<EntityType<EntityArachas>> ARACHAS = ENTITIES
@@ -250,4 +253,14 @@ public class RegistryHandler {
 					() -> EntityType.Builder.<EntityGhoul>create(EntityGhoul::new, EntityClassification.MONSTER)
 							.size(0.8F, 0.9F)
 							.build(new ResourceLocation(Main.MOD_ID, "ghoul").toString()));
+	public static final RegistryObject<EntityType<EntityNekker>> NEKKER = ENTITIES
+			.register("nekker",
+					() -> EntityType.Builder.<EntityNekker>create(EntityNekker::new, EntityClassification.MONSTER)
+							.size(0.4F, 1.3F)
+							.build(new ResourceLocation(Main.MOD_ID, "nekker").toString()));
+	public static final RegistryObject<EntityType<EntityRotfiend>> ROTFIEND = ENTITIES
+			.register("rotfiend",
+					() -> EntityType.Builder.<EntityRotfiend>create(EntityRotfiend::new, EntityClassification.MONSTER)
+							.size(0.6F, 1.95F)
+							.build(new ResourceLocation(Main.MOD_ID, "rotfiend").toString()));
 }

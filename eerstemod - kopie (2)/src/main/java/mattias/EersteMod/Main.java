@@ -1,9 +1,6 @@
 package mattias.EersteMod;
 
-import mattias.EersteMod.entities.EntityArachas;
-import mattias.EersteMod.entities.EntityDrowner;
-import mattias.EersteMod.entities.EntityFleder;
-import mattias.EersteMod.entities.EntityFoglet;
+import mattias.EersteMod.entities.*;
 import mattias.EersteMod.entities.renders.*;
 import mattias.EersteMod.util.handlers.RegistryHandler;
 
@@ -71,7 +68,9 @@ public class Main {
 			GlobalEntityTypeAttributes.put(RegistryHandler.DROWNER.get(), EntityDrowner.getAttributes().create());
 			GlobalEntityTypeAttributes.put(RegistryHandler.FLEDER.get(), EntityFleder.getAttributes().create());
 			GlobalEntityTypeAttributes.put(RegistryHandler.FOGLET.get(), EntityFoglet.getAttributes().create());
-			GlobalEntityTypeAttributes.put(RegistryHandler.GHOUL.get(), EntityFoglet.getAttributes().create());
+			GlobalEntityTypeAttributes.put(RegistryHandler.GHOUL.get(), EntityGhoul.getAttributes().create());
+			GlobalEntityTypeAttributes.put(RegistryHandler.ROTFIEND.get(), EntityRotfiend.getAttributes().create());
+			GlobalEntityTypeAttributes.put(RegistryHandler.NEKKER.get(), EntityNekker.getAttributes().create());
 		});
 	}
 
@@ -126,5 +125,8 @@ public class Main {
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.FLEDER.get(), RenderFleder::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.FOGLET.get(), RenderFoglet::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.GHOUL.get(), RenderGhoul::new);
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.NEKKER.get(), RenderNekker::new);
+		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.ROTFIEND.get(), RenderRotfiend::new);
+
 	}
 }
