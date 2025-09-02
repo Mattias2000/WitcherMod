@@ -1,9 +1,10 @@
 package mattias.EersteMod.items;
 
+import mattias.EersteMod.Main;
+
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -21,7 +22,7 @@ public class MedallionBase extends Item {
 	public MedallionBase()
 	{
 		super(new Item.Properties()
-				.group(ItemGroup.TOOLS)
+				.group(Main.TAB)
 				.maxDamage(50));
 }
 
@@ -48,6 +49,4 @@ public class MedallionBase extends Item {
 		playerIn.addStat(Stats.ITEM_USED.get(this));
 		return new ActionResult<>(ActionResultType.SUCCESS, stack);
 	}
-
-
 }

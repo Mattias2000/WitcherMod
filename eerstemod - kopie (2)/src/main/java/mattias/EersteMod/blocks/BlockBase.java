@@ -1,14 +1,13 @@
 package mattias.EersteMod.blocks;
 
+import mattias.EersteMod.Main;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
 
 public class BlockBase extends BlockItem {
 
 	public BlockBase(Block block) {
-		super(block, new Properties().group(ItemGroup.BUILDING_BLOCKS));
+		super(block, new Properties().group(Main.TAB));
 	}
 }
-
-

@@ -1,14 +1,14 @@
 package mattias.EersteMod.items;
 
+import mattias.EersteMod.Main;
 import mattias.EersteMod.bombs.*;
-
 import mattias.EersteMod.signs.EntityAard;
 import mattias.EersteMod.signs.EntityAxii;
 import mattias.EersteMod.signs.EntityIgni;
 import mattias.EersteMod.signs.EntityYrden;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -42,7 +42,7 @@ public class Sign_BombBase extends Item {
 	}
 
 	private static Properties getProperties(ItemType type) {
-		Item.Properties props = new Item.Properties().group(ItemGroup.COMBAT);
+		Item.Properties props = new Item.Properties().group(Main.TAB);
 		if (type == ItemType.AARD || type == ItemType.IGNI || type == ItemType.QUEN || type == ItemType.AXII || type == ItemType.YRDEN) {
 			props.maxDamage(200); // all signs use durability
 		}

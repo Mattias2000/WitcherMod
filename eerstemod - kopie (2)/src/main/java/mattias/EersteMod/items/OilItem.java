@@ -1,5 +1,7 @@
 package mattias.EersteMod.items;
 
+import mattias.EersteMod.Main;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -14,7 +16,7 @@ public class OilItem extends Item {
 	private final int level;
 
 	public OilItem(Enchantment enchantment, int level) {
-		super(new Properties().group(ItemGroup.COMBAT));
+		super(new Properties().group(Main.TAB));
 		this.enchantment = enchantment;
 		this.level = level;
 	}

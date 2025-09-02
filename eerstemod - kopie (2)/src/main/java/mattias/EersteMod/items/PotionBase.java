@@ -1,5 +1,7 @@
 package mattias.EersteMod.items;
 
+import mattias.EersteMod.Main;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,12 +19,11 @@ public class PotionBase extends Item {
     private final boolean clearsEffects;
 
     public PotionBase(EffectInstance effect, EffectInstance effect2, boolean clearsEffects, ItemStack... rewards) {
-        super(new Item.Properties().maxStackSize(1).group(ItemGroup.BREWING));
+        super(new Item.Properties().maxStackSize(1).group(Main.TAB));
         this.effect = effect;
         this.effect2 = effect2;
         this.rewards = rewards;
         this.clearsEffects = clearsEffects;
-
     }
 
     @Override

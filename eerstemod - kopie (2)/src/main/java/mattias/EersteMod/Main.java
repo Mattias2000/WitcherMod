@@ -2,6 +2,7 @@ package mattias.EersteMod;
 
 import mattias.EersteMod.entities.*;
 import mattias.EersteMod.entities.renders.*;
+import mattias.EersteMod.util.WitcherTab;
 import mattias.EersteMod.util.handlers.RegistryHandler;
 import mattias.EersteMod.util.handlers.SoundsHandler;
 import mattias.EersteMod.world.ModWorldGen;
@@ -14,6 +15,7 @@ import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -36,6 +38,8 @@ import java.util.List;
 public class Main {
 	public static final Logger LOGGER = LogManager.getLogger("The Witcher");
 	public static final String MOD_ID = "em";
+	public static final ItemGroup TAB = new WitcherTab();
+
 
 	public Main() {
 

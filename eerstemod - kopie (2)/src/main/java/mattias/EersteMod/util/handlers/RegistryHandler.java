@@ -2,7 +2,6 @@ package mattias.EersteMod.util.handlers;
 
 import mattias.EersteMod.Main;
 import mattias.EersteMod.blocks.*;
-
 import mattias.EersteMod.bombs.*;
 import mattias.EersteMod.entities.*;
 import mattias.EersteMod.items.*;
@@ -15,13 +14,13 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -34,12 +33,10 @@ public class RegistryHandler {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Main.MOD_ID);
 
-
 	public static void init() {
 		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-
 	}
 
 	//silver
@@ -190,13 +187,13 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", WItem::new);
 	public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", WItem::new);
 	public static final RegistryObject<Item> WEB = ITEMS.register("web", WItem::new);
-	public static final RegistryObject<Item> ARACHAS_SPAWN_EGG = ITEMS.register("arachas_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ARACHAS, 0xff99cc, 0x99ffcc, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> DROWNER_SPAWN_EGG = ITEMS.register("drowner_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.DROWNER, 9732779, 6936552, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> FLEDER_SPAWN_EGG = ITEMS.register("fleder_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FLEDER, 7033908, 2169358, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> FOGLET_SPAWN_EGG = ITEMS.register("foglet_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FOGLET, 13685955, 14802881, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> GHOUL_SPAWN_EGG = ITEMS.register("ghoul_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.GHOUL, 10193263, 8873793, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> NEKKER_SPAWN_EGG = ITEMS.register("nekker_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.NEKKER, 11437146, 000000, new Item.Properties().group(ItemGroup.MISC)));
-	public static final RegistryObject<Item> ROTFIEND_SPAWN_EGG = ITEMS.register("rotfiend_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ROTFIEND, 15101791, 13019229, new Item.Properties().group(ItemGroup.MISC)));
+	public static final RegistryObject<Item> ARACHAS_SPAWN_EGG = ITEMS.register("arachas_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ARACHAS, 0xff99cc, 0x99ffcc, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> DROWNER_SPAWN_EGG = ITEMS.register("drowner_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.DROWNER, 9732779, 6936552, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> FLEDER_SPAWN_EGG = ITEMS.register("fleder_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FLEDER, 7033908, 2169358, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> FOGLET_SPAWN_EGG = ITEMS.register("foglet_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.FOGLET, 13685955, 14802881, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> GHOUL_SPAWN_EGG = ITEMS.register("ghoul_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.GHOUL, 10193263, 8873793, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> NEKKER_SPAWN_EGG = ITEMS.register("nekker_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.NEKKER, 11437146, 000000, new Item.Properties().group(Main.TAB)));
+	public static final RegistryObject<Item> ROTFIEND_SPAWN_EGG = ITEMS.register("rotfiend_spawn_egg", () -> new ForgeSpawnEggItem(RegistryHandler.ROTFIEND, 15101791, 13019229, new Item.Properties().group(Main.TAB)));
 
 	//Monster Loot
 	public static final RegistryObject<Item> MONSTER_CLAW = ITEMS.register("monster_claw", WItem::new);
@@ -220,7 +217,7 @@ public class RegistryHandler {
 	public static final RegistryObject<Item> VERMILION = ITEMS.register("vermilion", WItem::new);
 
 	//Weapons
-	public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register("silver_sword", () -> new SwordItem(ToolMaterialList.SILVER, 3, -2.4f, new Item.Properties().group(ItemGroup.COMBAT)));
+	public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register("silver_sword", () -> new SwordItem(ToolMaterialList.SILVER, 3, -2.4f, new Item.Properties().group(Main.TAB)));
 
 	//Entities
 	public static final RegistryObject<EntityType<EntityWeb>> WEB_ENTITY = ENTITIES
