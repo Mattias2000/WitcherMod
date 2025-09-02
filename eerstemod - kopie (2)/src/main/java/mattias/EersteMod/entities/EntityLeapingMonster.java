@@ -1,15 +1,15 @@
 package mattias.EersteMod.entities;
 
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
-public class EntityLeapingMonster extends CreatureEntity {
+public class EntityLeapingMonster extends MonsterEntity {
 
-    public EntityLeapingMonster(final EntityType<? extends CreatureEntity> type, final World worldIn) {
+    public EntityLeapingMonster(final EntityType<? extends MonsterEntity> type, final World worldIn) {
         super(type,worldIn);
     }
 

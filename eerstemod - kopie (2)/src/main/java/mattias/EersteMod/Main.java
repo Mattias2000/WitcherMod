@@ -5,16 +5,19 @@ import mattias.EersteMod.entities.renders.*;
 import mattias.EersteMod.util.handlers.RegistryHandler;
 
 import mattias.EersteMod.util.handlers.SoundsHandler;
+import mattias.EersteMod.world.ModWorldGen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -41,6 +44,7 @@ public class Main {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
 		RegistryHandler.init();
+		MinecraftForge.EVENT_BUS.addListener(ModWorldGen::onBiomeLoading);
 		SoundsHandler.registerSounds();
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -71,6 +75,50 @@ public class Main {
 			GlobalEntityTypeAttributes.put(RegistryHandler.GHOUL.get(), EntityGhoul.getAttributes().create());
 			GlobalEntityTypeAttributes.put(RegistryHandler.ROTFIEND.get(), EntityRotfiend.getAttributes().create());
 			GlobalEntityTypeAttributes.put(RegistryHandler.NEKKER.get(), EntityNekker.getAttributes().create());
+		});
+		event.enqueueWork(() -> {
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.NEKKER.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.ARACHAS.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.DROWNER.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.FLEDER.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.FOGLET.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.GHOUL.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
+			EntitySpawnPlacementRegistry.register(
+					RegistryHandler.ROTFIEND.get(),
+					EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+					Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+					MonsterEntity::canMonsterSpawn
+			);
 		});
 	}
 

@@ -1,116 +1,171 @@
 package mattias.EersteMod.world;
 
+import mattias.EersteMod.util.handlers.RegistryHandler;
+
+import net.minecraft.block.BushBlock;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ISeedReader;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.MobSpawnInfo;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.entity.EntityClassification;
+
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+
 import java.util.Random;
 
-import mattias.EersteMod.init.RegistryHandler;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.BiomeForest;
-import net.minecraft.world.biome.BiomeForestMutated;
-import net.minecraft.world.biome.BiomeHills;
-import net.minecraft.world.biome.BiomeJungle;
-import net.minecraft.world.biome.BiomeMushroomIsland;
-import net.minecraft.world.biome.BiomePlains;
-import net.minecraft.world.biome.BiomeSavanna;
-import net.minecraft.world.biome.BiomeSavannaMutated;
-import net.minecraft.world.biome.BiomeSnow;
-import net.minecraft.world.biome.BiomeSwamp;
-import net.minecraft.world.biome.BiomeTaiga;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.fml.common.IWorldGenerator;
+public class ModWorldGen {
 
-public class ModWorldGen implements IWorldGenerator {
+	// === ORE FEATURE ===
+	public static final ConfiguredFeature<?, ?> SILVER_ORE = Feature.ORE
+			.withConfiguration(new OreFeatureConfig(
+					OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
+					RegistryHandler.SILVER_ORE.get().getDefaultState(),
+					6 // vein size
+			))
+			.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(16, 0, 64)))
+			.square()
+			.count(6); // veins per chunk
 
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		if (world.provider.getDimension() == 0 && world.getWorldType() != WorldType.FLAT) {
-			generateOverworld(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
+	// === EVENT HANDLER ===
+	public static void onBiomeLoading(BiomeLoadingEvent event) {
+		// Ores in Overworld
+		if (event.getCategory() != Biome.Category.NETHER && event.getCategory() != Biome.Category.THEEND) {
+			event.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, SILVER_ORE);
+		}
+
+		Biome.Category category = event.getCategory();
+		ResourceLocation biomeName = event.getName();
+
+		// Forest herbs + Nekker spawns
+		if (category == Biome.Category.FOREST) {
+			addHerbs(event, RegistryHandler.ALLSPICE.get());
+			addHerbs(event, RegistryHandler.BALISSE.get());
+			addHerbs(event, RegistryHandler.MISTLETOE.get());
+
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.NEKKER.get(),
+							120, // spawn weight
+							4,  // min group
+							10   // max group
+					)
+			);
+		}
+
+		if (category == Biome.Category.JUNGLE) {
+			addHerbs(event, RegistryHandler.FEAINNEWEDD.get());
+			addHerbs(event, RegistryHandler.ERGOT.get());
+		}
+
+		if (category == Biome.Category.PLAINS) {
+			addHerbs(event, RegistryHandler.HAN_FIBER.get());
+			addHerbs(event, RegistryHandler.HELLEBORE.get());
+			addHerbs(event, RegistryHandler.WHITE_MYRTLE.get());
+
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.GHOUL.get(),
+							120, // spawn weight
+							3,  // min group
+							6   // max group
+					)
+			);
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.ROTFIEND.get(),
+							120, // spawn weight
+							1,  // min group
+							3  // max group
+					)
+			);
+		}
+
+		if (category == Biome.Category.SWAMP) {
+			addHerbs(event, RegistryHandler.BEGGARTICK.get());
+			addHerbs(event, RegistryHandler.FOOLS_PARSLEY.get());
+			addHerbs(event, RegistryHandler.WOLFS_ALOE_LEAVES.get());
+
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.DROWNER.get(),
+							120, // spawn weight
+							2,  // min group
+							5  // max group
+					)
+			);
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.FOGLET.get(),
+							120, // spawn weight
+							3,  // min group
+							4  // max group
+					)
+			);
+		}
+
+		if (category == Biome.Category.TAIGA) {
+			addHerbs(event, RegistryHandler.CROWSEYE.get());
+			addHerbs(event, RegistryHandler.HOP.get());
+			addHerbs(event, RegistryHandler.WOLFSBANE.get());
+		}
+
+		if (category == Biome.Category.MUSHROOM) {
+			addHerbs(event, RegistryHandler.GREEN_MUSHROOM.get());
+			addHerbs(event, RegistryHandler.SEWANT_MUSHROOM.get());
+		}
+
+		if (category == Biome.Category.DESERT) {
+			event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(RegistryHandler.ARACHAS.get(),
+							120, // spawn weight
+							1,  // min group
+							3  // max group
+					)
+			);
+		}
+
+		if (category == Biome.Category.EXTREME_HILLS) {
+			addHerbs(event, RegistryHandler.GINATIA.get());
+			addHerbs(event, RegistryHandler.BERBERCANE.get());
+			addHerbs(event, RegistryHandler.CELANDINE.get());
+		}
+
+		if (category == Biome.Category.SAVANNA) {
+			addHerbs(event, RegistryHandler.MANDRAKE.get());
+			addHerbs(event, RegistryHandler.VERBENA.get());
+		}
+
+		if (category == Biome.Category.ICY) {
+			addHerbs(event, RegistryHandler.BRYONIA.get());
+			addHerbs(event, RegistryHandler.HONEYSUCKLE.get());
 		}
 	}
-	
-	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkgenerator, IChunkProvider chunkprovider) {
-		generateOre(RegistryHandler.SILVER_ORE_BLOCK.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 16, 64, random.nextInt(6) + 1, 6);
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForest) {
-			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForestMutated) {
-			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeHills) {
-			populate(new HerbGen(RegistryHandler.GINATIA), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.BERBERCANE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.CELANDINE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeJungle) {
-			populate(new HerbGen(RegistryHandler.FEAINNEWEDD), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.ERGOT), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeMushroomIsland) {
-			populate(new HerbGen(RegistryHandler.GREEN_MUSHROOM), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.SEWANT_MUSHROOM), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomePlains) {
-			populate(new HerbGen(RegistryHandler.HAN_FIBER), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.HELLEBORE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.WHITE_MYRTLE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeForest) {
-			populate(new HerbGen(RegistryHandler.ALLSPICE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.BALISSE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.MISTLETOE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSavanna) {
-			populate(new HerbGen(RegistryHandler.MANDRAKE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.VERBENA), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSavannaMutated) {
-			populate(new HerbGen(RegistryHandler.MANDRAKE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.VERBENA), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSnow) {
-			populate(new HerbGen(RegistryHandler.BRYONIA), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.HONEYSUCKLE), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeSwamp) {
-			populate(new HerbGen(RegistryHandler.BEGGARTICK), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.FOOLS_PARSLEY), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.WOLFS_ALOE_LEAVES), world, random, chunkX, chunkZ, 5);
-		}
-		if(world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 70, chunkZ * 16)) instanceof BiomeTaiga) {
-			populate(new HerbGen(RegistryHandler.CROWSEYE), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.HOP), world, random, chunkX, chunkZ, 5);
-			populate(new HerbGen(RegistryHandler.WOLFSBANE), world, random, chunkX, chunkZ, 5);
-		}
-	}
-	
+
+	// === INLINE HERB FEATURE ===
+	private static void addHerbs(BiomeLoadingEvent event, BushBlock herb) {
+		ConfiguredFeature<?, ?> herbFeature = new Feature<NoFeatureConfig>(NoFeatureConfig.CODEC) {
+			@Override
+			public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos position, NoFeatureConfig config) {
+				BlockPos blockpos = position.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
 
-	private void generateOre(IBlockState ore, World world, Random random, int x, int z, int minY, int maxY, int size, int chances) {
-		int deltaY = maxY - minY;
-		
-		for (int i = 0; i < chances; i++)
-		{
-			BlockPos pos = new BlockPos(x + random.nextInt(16), minY + random.nextInt(deltaY), z + random.nextInt(16));
-			
-			WorldGenMinable generator = new WorldGenMinable(ore, size);
-			generator.generate(world,  random,  pos);
+				if (world.isAirBlock(blockpos)
+						&& world.getWorld().getDimensionKey() != World.THE_NETHER
+						&& blockpos.getY() < 255
+						&& herb.getDefaultState().isValidPosition(world, blockpos)) {
+					world.setBlockState(blockpos, herb.getDefaultState(), 2);
+					return true;
+				}
+				return false;
+			}
 		}
-	}
-	private void populate(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int amountPerChunk) {
-		for(int i = 0; i < amountPerChunk; i++) {
-			int x = chunkX * 16 + random.nextInt(16);
-			int z = chunkZ * 16 + random.nextInt(16);
-			int y = world.getChunkFromChunkCoords(x >> 4, z >> 4).getHeight(new BlockPos(x & 15, 0, z & 15)) - 1;
-			generator.generate(world, random, new BlockPos(x, y, z));
-		}
+				.withConfiguration(NoFeatureConfig.INSTANCE)
+				.withPlacement(Features.Placements.HEIGHTMAP_SPREAD_DOUBLE_PLACEMENT)
+				.count(5); // ~5 patches per chunk
+
+		event.getGeneration().withFeature(
+				GenerationStage.Decoration.VEGETAL_DECORATION,
+				herbFeature
+		);
 	}
 }
