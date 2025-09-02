@@ -3,9 +3,9 @@ package mattias.EersteMod;
 import mattias.EersteMod.entities.*;
 import mattias.EersteMod.entities.renders.*;
 import mattias.EersteMod.util.handlers.RegistryHandler;
-
 import mattias.EersteMod.util.handlers.SoundsHandler;
 import mattias.EersteMod.world.ModWorldGen;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -50,7 +50,6 @@ public class Main {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
-		// In your ModItems class or client setup
 		ItemModelsProperties.registerProperty(
 				RegistryHandler.MEDALLION.get(),
 				new ResourceLocation("vibrating"),
@@ -175,6 +174,5 @@ public class Main {
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.GHOUL.get(), RenderGhoul::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.NEKKER.get(), RenderNekker::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.ROTFIEND.get(), RenderRotfiend::new);
-
 	}
 }
