@@ -2,7 +2,6 @@ package mattias.EersteMod;
 
 import mattias.EersteMod.entities.*;
 import mattias.EersteMod.entities.renders.*;
-import mattias.EersteMod.util.WitcherTab;
 import mattias.EersteMod.util.handlers.RegistryHandler;
 import mattias.EersteMod.util.handlers.SoundsHandler;
 import mattias.EersteMod.world.ModWorldGen;
@@ -17,6 +16,7 @@ import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.gen.Heightmap;
@@ -38,8 +38,6 @@ import java.util.List;
 public class Main {
 	public static final Logger LOGGER = LogManager.getLogger("The Witcher");
 	public static final String MOD_ID = "em";
-	public static final ItemGroup TAB = new WitcherTab();
-
 
 	public Main() {
 
@@ -179,4 +177,12 @@ public class Main {
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.NEKKER.get(), RenderNekker::new);
 		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.ROTFIEND.get(), RenderRotfiend::new);
 	}
+
+	public static final ItemGroup TAB = new ItemGroup("witchertab") {
+
+		@Override
+		public ItemStack createIcon() {
+			return new ItemStack(RegistryHandler.MEDALLION.get());
+		}
+	};
 }
